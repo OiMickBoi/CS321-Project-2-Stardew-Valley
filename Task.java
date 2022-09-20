@@ -102,6 +102,9 @@ public class Task implements TaskInterface{
      *
      * @return String of the Task
      */
-    public String toString();
+    public String toString() {
+        return "Task.toString() needs implementation.";
+    }
+
 
 }
