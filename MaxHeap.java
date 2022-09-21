@@ -67,9 +67,10 @@ public class MaxHeap {
 
         if (largest != i) {
             // exchange A[i] and A[largest]
-            b = A[largest];
-            A[largest] = A[i];
-            A[i] = b;
+//            b = A[largest];
+//            A[largest] = A[i];
+//            A[i] = b;
+            exchangeTasks(A, largest, i);
             heapify(A, largest);
         }
     }
@@ -105,7 +106,8 @@ public class MaxHeap {
     }
 
     public void increaseKey(Task[] A, Task x, int k) {
-        int i = 0;
+        Task b;
+        int i;
         if (k < x.getKey()) {
             System.out.println("new key is smaller than current key");
         }
@@ -114,10 +116,12 @@ public class MaxHeap {
         while (i > 1 && A[parent(i)].getKey() < A[i].getKey()){
             // exchange A[i] with A[Parent(i)], updating the information that maps
             // priority queue objects to array indices
-
+//            b = A[largest];
+//            A[largest] = A[i];
+//            A[i] = b;
+            exchangeTasks(A, i, parent(i));
+//            heapify(A, largest);
         }
-
-
     }
 
     public boolean isEmpty() {
@@ -132,5 +136,10 @@ public class MaxHeap {
         this.heapsize = heapSize;
     }
 
+    public void exchangeTasks(Task[] A, int x, int y) {
+        Task b;
+        b = A[y];
+        A[y] = A[x];
+        A[x] = b;
+    }
 }
-
