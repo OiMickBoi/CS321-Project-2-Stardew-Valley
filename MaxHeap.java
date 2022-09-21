@@ -2,7 +2,8 @@ public class MaxHeap {
     /**
      * Default constructor to build empty max heap
      */
-    private int heapsize;
+    private int heapsize = 0;
+    private int key = 0;
 
     public MaxHeap () {
         this(20);
@@ -85,15 +86,37 @@ public class MaxHeap {
     public Task extractMax(Task[] A) {
         Task m = max(A);
         A[1] = A[heapsize];
-        heapsize = heapsize - 1; //FIXME make getters and setters
-        return null;
+        heapsize = heapsize - 1; 
+        heapify(A, 1);
+        return m;
     }
 
-    public void insert(Task t) {
-
+    public void insert(Task[] A, Task x, int n) {
+        double negInf = Double.NEGATIVE_INFINITY;
+        if (heapsize == n) {
+            System.out.println("error: heap overflow");
+        }
+        heapsize += 1;
+        int k = x.getKey();
+        x.setKey((int)negInf);  
+        A[heapsize] = x;
+        // TODO map x to index heap-size in the array
+        increaseKey(A, x, n);
     }
 
-    public void increaseKey(int i, Task K) {
+    public void increaseKey(Task[] A, Task x, int k) {
+        int i = 0;
+        if (k < x.getKey()) {
+            System.out.println("new key is smaller than current key");
+        }
+        x.setKey(k);
+        //find the index i in array A where object x occurs
+        while (i > 1 && A[parent(i)].getKey() < A[i].getKey()){
+            // exchange A[i] with A[Parent(i)], updating the information that maps
+            // priority queue objects to array indices
+
+        }
+
 
     }
 
