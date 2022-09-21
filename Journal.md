@@ -47,3 +47,5 @@ https://stackoverflow.com/questions/21263607/can-a-normal-class-implement-multip
 https://www.geeksforgeeks.org/constructor-chaining-java-examples/ // constructors
 
 https://www.w3schools.com/java/java_encapsulation.asp // getters and setters.
+
+https://stackoverflow.com/questions/12952024/how-to-implement-infinity-in-java // infinity

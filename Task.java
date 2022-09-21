@@ -1,9 +1,17 @@
 public class Task implements TaskInterface, Comparable<Task> {
     private int priority = 0;
     private int waitingTime = 0;
+    private int key = 0;
 
     public Task() {
         
+    }
+    public int getKey() {
+        return key;
+    }
+
+    public void setKey(int key) {
+        this.key = key;
     }
 
     /**
