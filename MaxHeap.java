@@ -91,7 +91,7 @@ public class MaxHeap {
         return m;
     }
 
-    public void insert(Task[] A, int n, Task x) {
+    public void insert(Task[] A, Task x, int n) {
         double negInf = Double.NEGATIVE_INFINITY;
         if (heapsize == n) {
             System.out.println("error: heap overflow");
@@ -100,11 +100,23 @@ public class MaxHeap {
         int k = x.getKey();
         x.setKey((int)negInf);  
         A[heapsize] = x;
-        
-
+        // TODO map x to index heap-size in the array
+        increaseKey(A, x, n);
     }
 
-    public void increaseKey(int i, Task K) {
+    public void increaseKey(Task[] A, Task x, int k) {
+        int i = 0;
+        if (k < x.getKey()) {
+            System.out.println("new key is smaller than current key");
+        }
+        x.setKey(k);
+        //find the index i in array A where object x occurs
+        while (i > 1 && A[parent(i)].getKey() < A[i].getKey()){
+            // exchange A[i] with A[Parent(i)], updating the information that maps
+            // priority queue objects to array indices
+
+        }
+
 
     }
 
