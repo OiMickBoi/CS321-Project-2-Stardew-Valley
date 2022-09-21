@@ -21,6 +21,13 @@ of the heap, but this is the size of the array not the heap.
 I need to change all the a.length to heapsize
 and make getters and setters for heapsize.
 
+14:58
+I completed the above todo.
+16:06
+made a new branch where i have the array built into MaxHeap class
+I changed all the methods so instead of passing in parameter array A
+of type Task it now how it built it.
+
 ## Sources to cite:
 https://www.w3schools.com/java/java_constructors.asp // Java Constructors
 

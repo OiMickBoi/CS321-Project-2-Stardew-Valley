@@ -1,34 +1,37 @@
 public class MaxHeap {
+    private int heapSize = 0;
+    private int key = 0;
+    private Task [] heapArray;
+
     /**
      * Default constructor to build empty max heap
      */
-    private int heapsize = 0;
-    private int key = 0;
-
     public MaxHeap () {
+        // this(20, arrayHeap);
         this(20);
     }
 
     /**
      * Overloaded constructor to build the heap
-     * @param size: the size of the heap
+     * @param n: size 
+     * @param heapArray: heapArrayrray to pass in
      */
-    public MaxHeap (int n, Task[] A) {
-        buildMaxHeap(n, A);
+    public MaxHeap (int n) {
+        buildMaxHeap(n);
     }
 
     /**
      * Builds a max heap out of an unsorted array
      * @param n: the size of the heap
      */
-    public void buildMaxHeap(int n, Task[] A) {
-        // A[1:n] is an unsorted array
-        // 1. A.heap-size = n
+    public void buildMaxHeap(int n) {
+        // heapArray[1:n] is an unsorted array
+        // 1. heapArray.heap-size = n
         // 2. for i = n/2 downto 1 // skip the leaves
-        // 3. do MAX-HEAPIFY(A, i)
-        // Task [] A = new Task[n];
+        // 3. do MAX-HEAPIFY(heapArray, i)
+        // Task [] heapArray = new Task[n];
         for (int i = n/2; i > 0; i--) {
-            heapify(A, i);
+            heapify(heapArray, i);
         }
     }
 
@@ -47,80 +50,80 @@ public class MaxHeap {
         return 2 * i;
     }
 
-    public void heapify(Task [] A, int i) { // heapification downward
+    public void heapify(int i) { // heapification downward
         /*
         Pre-condition: Both the left and right subtrees of node i are max-heaps
         and i is less than or equal to heap-size[A]
         Post-condition: The subtree rooted at node i is a max-heap
         */
-        Task b;
+        // Task b;
         int largest;
         int l = left(i);
         int r = right(i);
-        if (l <= heapsize && A[l].getPriority() > A[r].getPriority())
+        if (l <= heapSize && heapArray[l].getPriority() > heapArray[r].getPriority())
             largest = l;
         else
             largest = i;
 
-        if (r <= heapsize && A[r].getPriority() > A[largest].getPriority())
+        if (r <= heapSize && heapArray[r].getPriority() > heapArray[largest].getPriority())
             largest = r;
 
         if (largest != i) {
-            // exchange A[i] and A[largest]
-//            b = A[largest];
-//            A[largest] = A[i];
-//            A[i] = b;
-            exchangeTasks(A, largest, i);
-            heapify(A, largest);
+            // exchange heapArray[i] and heapArray[largest]
+//            b = heapArray[largest];
+//            heapArray[largest] = heapArray[i];
+//            heapArray[i] = b;
+            exchangeTasks(heapArray, largest, i);
+            heapify(largest);
         }
     }
 
-    public Task max(Task[] A) {
-        if (heapsize < 1) {
+    public Task max() {
+        if (heapSize < 1) {
             System.out.println("heap underflow");
             return null;
         } else {
-            return A[1];
+            return heapArray[1];
         }
     }
 
-    public Task extractMax(Task[] A) {
-        Task m = max(A);
-        A[1] = A[heapsize];
-        heapsize = heapsize - 1; 
-        heapify(A, 1);
+    public Task extractMax(Task[] heapArray) {
+        Task m = max(heapArray);
+        heapArray[1] = heapArray[heapSize];
+        heapSize = heapSize - 1; 
+        heapify(heapArray, 1);
         return m;
     }
 
-    public void insert(Task[] A, Task x, int n) {
+    public void insert(Task[] heapArray, Task x, int n) {
         double negInf = Double.NEGATIVE_INFINITY;
-        if (heapsize == n) {
+        if (heapSize == n) {
             System.out.println("error: heap overflow");
         }
-        heapsize += 1;
+        heapSize += 1;
         int k = x.getKey();
         x.setKey((int)negInf);  
-        A[heapsize] = x;
+        heapArray[heapSize] = x;
         // TODO map x to index heap-size in the array
-        increaseKey(A, x, n);
+        increaseKey(heapArray, x, n);
     }
 
-    public void increaseKey(Task[] A, Task x, int k) {
+    public void increaseKey(Task[] heapArray, Task x, int k) {
         Task b;
-        int i;
+        int i; // TODO initialize variable
         if (k < x.getKey()) {
             System.out.println("new key is smaller than current key");
         }
         x.setKey(k);
-        //find the index i in array A where object x occurs
-        while (i > 1 && A[parent(i)].getKey() < A[i].getKey()){
-            // exchange A[i] with A[Parent(i)], updating the information that maps
+        //find the index i in array heapArray where object x occurs
+        while (i > 1 && heapArray[parent(i)].getKey() < heapArray[i].getKey()){
+            // exchange heapArray[i] with heapArray[Parent(i)], updating the information that maps
             // priority queue objects to array indices
-//            b = A[largest];
-//            A[largest] = A[i];
-//            A[i] = b;
-            exchangeTasks(A, i, parent(i));
-//            heapify(A, largest);
+//            b = heapArray[largest];
+//            heapArray[largest] = heapArray[i];
+//            heapArray[i] = b;
+            exchangeTasks(heapArray, i, parent(i));
+//            heapify(heapArray, largest);
         }
     }
 
@@ -128,18 +131,29 @@ public class MaxHeap {
         return false;
     }
 
+    public void exchangeTasks(Task[] heapArray, int x, int y) {
+        Task b;
+        b = heapArray[y];
+        heapArray[y] = heapArray[x];
+        heapArray[x] = b;
+    }
+
     public int getHeapSize() {
-        return heapsize;
+        return heapSize;
     }
 
     public void setHeapSize(int heapSize) {
-        this.heapsize = heapSize;
+        this.heapSize = heapSize;
     }
 
-    public void exchangeTasks(Task[] A, int x, int y) {
-        Task b;
-        b = A[y];
-        A[y] = A[x];
-        A[x] = b;
+    public Task [] getHeapArray() {
+        return heapArray;
     }
+
+    public void setHeapArray(Task[] heapArray) {
+        this.heapArray = heapArray;
+    }
+
+
+
 }
