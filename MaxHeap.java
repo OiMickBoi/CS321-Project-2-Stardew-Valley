@@ -2,6 +2,7 @@ public class MaxHeap {
     /**
      * Default constructor to build empty max heap 
      */
+    //TODO write compare to method.
     public void buildMaxHeap() {
         // A[1:n] is an unsorted array
         // 1. A.heap-size = n
@@ -34,7 +35,7 @@ public class MaxHeap {
         and i is less than or equal to heap-size[A]
         Post-condition: The subtree rooted at node i is a max-heap
         */
-        Task x;
+        Task b;
         int largest;
         int l = left(i);
         int r = right(i);
@@ -49,21 +50,38 @@ public class MaxHeap {
         if (largest != i) {
             // exchange A[i] with A[largest];
             // heapify(A, largest);
-            exchange(A[i], A[largest]);
+//            private void exchange(int x, int y) {
+//                int b = y;
+//                y = x;
+//                x = b;
+//                exchange(A[i], A[largest]);
+//            }
+            // exchange A[i] and A[largest]
+            b = A[largest];
+            A[largest] = A[i];
+            A[i] = b;
             heapify(A, largest);
         }
     }
 
-    public void max() {
+    public Task max() {
+        return null;
     }
 
-    public void extractMax() {
+    public Task extractMax() {
+        return null;
     }
 
-    public void insert() {
+    public void insert(Task t) {
+
     }
 
-    public void isEmpty() {
+    public void increaseKey(int i,  Task K) {
+
+    }
+
+    public boolean isEmpty() {
+        return false;
     }
 
     // Get the parent node using index
@@ -73,18 +91,12 @@ public class MaxHeap {
 
     // Get the right node using index
     private int right(int i) {
-        return 2 * i;
+        return 2 * i + 1;
     }
 
     // Get the left node using index
     private int left(int i) {
-        return 2 * i + 1;
+        return 2 * i;
     }
 
-
-    private void exchange(Task x, Task y) {
-        Task b = y;
-        y = x;
-        x = b;
-    }
 }

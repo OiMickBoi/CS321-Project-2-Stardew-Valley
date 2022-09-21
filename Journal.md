@@ -24,3 +24,5 @@ https://www.w3schools.com/java/java_encapsulation.asp // Encapsulation
 https://stackoverflow.com/questions/872310/javascript-swap-array-elements // Swap elements in a array
 
 https://www.geeksforgeeks.org/arrays-in-java/ // array declarations
+
+https://en.wikipedia.org/wiki/Heap_(data_structure) // info on Heap
