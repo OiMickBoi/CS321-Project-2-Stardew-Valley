@@ -1,56 +1,15 @@
-public class Task implements TaskInterface{
+public class Task implements TaskInterface, Comparable<Task> {
     private int priority = 0;
     private int waitingTime = 0;
 
-    /**
-     * enum for the six different types of Tasks.
-     */
-    public enum TaskType {
-
-        MINING(100, 20, 0.1, 0.05),
-        FISHING(150, 20, 0.1, 0),
-        FARM_MAINTENANCE(25, 10, 0.1, 0),
-        FEEDING(75, 10, 0.1, 0),
-        FORAGING(75, 0, 0, 0),
-        SOCIALIZING(25, 0, 0, 0);
-
-        private final int moneyPerHour;
-        private final int energyPerHour;
-        private final double passingOutProbability;
-        private final double dyingProbability;
-
-        TaskType(int moneyPerHour, int energyPerHour, double passingOutProbability, double dyingProbability) {
-            this.moneyPerHour = moneyPerHour;
-            this.energyPerHour = energyPerHour;
-            this.passingOutProbability = passingOutProbability;
-            this.dyingProbability = dyingProbability;
-        }
-
-        public int getMoneyPerHour()
-        {
-            return moneyPerHour;
-        }
-
-        public int getEnergyPerHour()
-        {
-            return energyPerHour;
-        }
-
-        public double getPassingOutProbability()
-        {
-            return passingOutProbability;
-        }
-
-        public double getDyingProbabilityProbability()
-        {
-            return dyingProbability;
-        }
+    public Task() {
+        
     }
 
     /**
      * Returns the priority.
      *
-     * @return the priority
+     * @return 1 if greater, -1 if less than
      */
     public int getPriority() {
         return priority;
@@ -95,6 +54,16 @@ public class Task implements TaskInterface{
      */
     public int getWaitingTime() {
         return waitingTime;
+    }
+
+    //priorities
+    public int compareTo(Task task) {
+        if(getPriority() > task.getPriority()) {
+            return 1;  
+        }
+        else if(getPriority() < task.getPriority()) {
+            return -1;  
+        }
     }
 
     /**
