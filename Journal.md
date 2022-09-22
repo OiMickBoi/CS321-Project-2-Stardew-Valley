@@ -28,6 +28,15 @@ made a new branch where i have the array built into MaxHeap class
 I changed all the methods so instead of passing in parameter array A
 of type Task it now how it built it.
 
+## 09-22-2022
+10:09
+Find out if MaxHeap's getIndex, increaseKey, and max should use try catch
+         
+Read insert pseudocode to find what the following means:
+    // TODO map x to index heap-size in the array
+Read increase pseudocde to find what follwing means:
+    // priority queue objects to array indices
+
 ## Sources to cite:
 https://www.w3schools.com/java/java_constructors.asp // Java Constructors
 
@@ -56,3 +65,7 @@ https://www.geeksforgeeks.org/constructor-chaining-java-examples/ // constructor
 https://www.w3schools.com/java/java_encapsulation.asp // getters and setters.
 
 https://stackoverflow.com/questions/12952024/how-to-implement-infinity-in-java // infinity
+
+https://www.tutorialkart.com/java/java-array/java-check-if-array-is-empty/ // check if array is empty
+
+https://www.w3schools.com/java/java_try_catch.asp // try catch
