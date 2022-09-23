@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch MaxHeapTest",
+            "request": "launch",
+            "mainClass": "MaxHeapTest",
+            "projectName": "CS321-Project-2-Stardew-Valley_34c75c67"
+        },
+        // {
+        //     "type": "java",
+        //     "name": "Launch MyLifeInStarDew",
+        //     "request": "launch",
+        //     "mainClass": "MyLifeInStarDew",
+        //     "projectName": "CS321-Project-2-Stardew-Valley_34c75c67"
+        // }
+    ]
+}

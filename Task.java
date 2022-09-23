@@ -2,10 +2,14 @@ public class Task implements TaskInterface, Comparable<Task> {
     private int priority = 0;
     private int waitingTime = 0;
     private int key = 0;
+    private TaskInterface.TaskType taskType;
 
-    public Task() {
-        
+    // Just a test constructor
+    public Task(int priority, int waitingTime) {
+        this.priority = priority;
+        this.waitingTime = waitingTime;
     }
+
     public int getKey() {
         return key;
     }
@@ -37,8 +41,9 @@ public class Task implements TaskInterface, Comparable<Task> {
      *
      * @return - Task.TaskType - the Task's type
      */
+    //TODO implement tasktype
     public Task.TaskType getTaskType() {
-        return TaskType.TaskType;
+        return taskType;
     }
 
     /**
@@ -71,6 +76,8 @@ public class Task implements TaskInterface, Comparable<Task> {
         }
         else if(getPriority() < task.getPriority()) {
             return -1;  
+        } else {
+            return 0;
         }
     }
 
@@ -79,9 +86,8 @@ public class Task implements TaskInterface, Comparable<Task> {
      *
      * @return String of the Task
      */
+    @Override
     public String toString() {
         return "Task.toString() needs implementation.";
     }
-
-
 }
