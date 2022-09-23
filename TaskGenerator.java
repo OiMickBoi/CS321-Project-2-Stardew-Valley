@@ -5,6 +5,11 @@ public class TaskGenerator implements TaskGeneratorInterface{
     private TaskInterface.TaskType taskType;
     private String taskDescription;
 
+    public TaskGenerator(double taskGenerationProbability, long seed){
+    }
+    public TaskGenerator(double taskGenerationProbability){
+    }
+
 
     /**
      * Creates a new Task with default zero priority.
@@ -17,6 +22,8 @@ public class TaskGenerator implements TaskGeneratorInterface{
         this.hourCreated = hourCreated;
         this.taskType = taskType;
         this.taskDescription = taskDescription;
+        Task newtask = new Task(1,2);
+        return newtask;
     }
 
     /**
@@ -29,28 +36,35 @@ public class TaskGenerator implements TaskGeneratorInterface{
     /**
      * Resets the total energy storage to DEFAULT_ENERGY level.
      */
-    public void resetCurrentEnergyStorage();
+    public void resetCurrentEnergyStorage() {
+    }
 
     /**
      * Returns the current energy storage.
      *
      * @returns current energy storage
      */
-    public int getCurrentEnergyStorage();
+    public int getCurrentEnergyStorage() {
+        return 0;
+    }
 
     /**
      * Sets the current energy storage.
      *
      * @param newEnergyNum number to set the energy
      */
-    public void setCurrentEnergyStorage(int newEnergyNum);
+    public void setCurrentEnergyStorage(int newEnergyNum) {
+
+    }
 
     /**
      * Determines if a new task is to be generated.
      *
      * @return true or false - if task should be generated
      */
-    public boolean generateTask();
+    public boolean generateTask() {
+        return false;
+    }
 
     /**
      * Determines the likelihood of passing out or dying
@@ -61,7 +75,9 @@ public class TaskGenerator implements TaskGeneratorInterface{
      * @param task - the Task
      * @returns  0, 1 or 2 depending on the unluckiness
      */
-    public int getUnlucky(Task task, double unluckyProbability);
+    public int getUnlucky(Task task, double unluckyProbability) {
+        return 0;
+    }
 
     /**
      * Given method that creates a String containing the Task's information.
@@ -69,6 +85,8 @@ public class TaskGenerator implements TaskGeneratorInterface{
      * @param task  the Task
      * @param taskType the Task's type
      */
-    public String toString(Task task, Task.TaskType taskType);
+    public String toString(Task task, Task.TaskType taskType) {
+        return "needs implementation";
+    }
     
 }

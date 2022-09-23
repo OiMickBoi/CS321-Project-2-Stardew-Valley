@@ -145,6 +145,9 @@ public class MaxHeap {
      * @param Task x is the Task to insert into the heap
      * @param is the position to insert into the heap 
      */
+    //heapsize - 1 put in the next avialable position
+    // take a task and put it into last avaiable position
+    // the int n overcomplicates the insert
     public void insert(Task x, int n) {
         //check if the heapsize is equal to array size
         if (heapSize == heapArray.length) {
@@ -156,8 +159,8 @@ public class MaxHeap {
             System.out.println("error: heap overflow");
         }
         heapSize += 1;
-        int k = x.getKey();
-        x.setKey((int)negInf);  
+        int k = x.getPriority();
+        x.setPri((int)negInf);
         heapArray[heapSize] = x;
         // TODO map x to index heap-size in the array
         increaseKey(x, n);
@@ -229,7 +232,7 @@ public class MaxHeap {
      * Getter for heapArray
      * @return heapArray;
      */
-    public Task [] getHeapArray() {
+    public Task[] getHeapArray() {
         return heapArray;
     }
 
