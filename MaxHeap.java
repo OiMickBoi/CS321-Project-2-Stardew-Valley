@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /* start at index one. you used the
    pseudocode straight from the book.
    so you have to use index 0 as dummy 
@@ -13,7 +15,7 @@ public class MaxHeap {
      * Default constructor to build empty max heap
      */
     public MaxHeap () {
-        heapArray = new Task[8];
+        heapArray = new Task[30];
         heapSize = 0;
     }
 
@@ -137,15 +139,6 @@ public class MaxHeap {
         return m;
     }
 
-    // public Task extractMax(Task[] heapArray) {
-    //     Task m = max();
-    //     heapArray[1] = heapArray[heapSize];
-    //     heapSize = heapSize - 1; 
-    //     heapify(1);
-    //     return m;
-    // }
-
-
     //TODO find out why insert has int n as a parameter
     /**
      * Insert a Task into the heap.
@@ -153,6 +146,11 @@ public class MaxHeap {
      * @param is the position to insert into the heap 
      */
     public void insert(Task x, int n) {
+        //check if the heapsize is equal to array size
+        if (heapSize == heapArray.length) {
+            heapArray = Arrays.copyOf(heapArray, heapArray.length);
+        }
+
         double negInf = Double.NEGATIVE_INFINITY;
         if (heapSize == n) {
             System.out.println("error: heap overflow");
