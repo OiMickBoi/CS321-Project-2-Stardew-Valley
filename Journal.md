@@ -69,3 +69,5 @@ https://stackoverflow.com/questions/12952024/how-to-implement-infinity-in-java /
 https://www.tutorialkart.com/java/java-array/java-check-if-array-is-empty/ // check if array is empty
 
 https://www.w3schools.com/java/java_try_catch.asp // try catch
+
+https://www.geeksforgeeks.org/null-pointer-exception-in-java/

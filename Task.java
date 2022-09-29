@@ -61,7 +61,7 @@ public class Task implements TaskInterface, Comparable<Task> {
     }
 
     /**
-     * Gets the waiting time of a process
+     * Gets the waiting time of a process.
      *
      * @return the waiting time
      */
@@ -69,13 +69,18 @@ public class Task implements TaskInterface, Comparable<Task> {
         return waitingTime;
     }
 
-    //priorities
+    /**
+     * Compares the priority of two tasks
+     * @param task
+     * @return
+     */
+
     public int compareTo(Task task) {
         if(getPriority() > task.getPriority()) {
-            return 1;  
+            return 1;
         }
         else if(getPriority() < task.getPriority()) {
-            return -1;  
+            return -1;
         } else {
             return 0;
         }

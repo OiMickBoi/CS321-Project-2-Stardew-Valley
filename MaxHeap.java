@@ -24,20 +24,20 @@ public class MaxHeap {
      * @param n: the size of the heap
      */
     public MaxHeap (int n) {
-        heapSize = n;
-        heapArray = new Task[n];
-        buildMaxHeap(n);
+        heapSize = 0;
+        heapArray = new Task[n+1];
+        //buildMaxHeap(n);
     }
 
     /**
      * Overloaded constructor to build the heap
-     * @param n: user's heap array
+     * @param A: user's heap array
      * @param n: the heap array's size 
      */
     public MaxHeap (Task [] A, int n) {
-        heapSize = n;
+        heapSize = 0;
         heapArray = A;
-        buildMaxHeap(n);
+//        buildMaxHeap(n);
     }
 
     /**
@@ -50,6 +50,7 @@ public class MaxHeap {
         // 2. for i = n/2 downto 1 // skip the leaves
         // 3. do MAX-HEAPIFY(heapArray, i)
         // Task [] heapArray = new Task[n];
+        heapSize = n;
         for (int i = n/2; i > 0; i--) {
             heapify(i);
         }
@@ -58,7 +59,7 @@ public class MaxHeap {
     // Get the parent node using index
     /**
      * Get the parent node using index
-     * @param n: the index of the child
+     * @param i: the index of the child
      * @return the index of the parent node 
      */
     private int parent(int i) {
@@ -67,7 +68,7 @@ public class MaxHeap {
 
     /**
      * Get the right node using index
-     * @param n: the index of the parent node
+     * @param i: the index of the parent node
      * @return the index of the right child node 
      */
     private int right(int i) {
@@ -76,7 +77,7 @@ public class MaxHeap {
 
     /**
      * Get the left node using index
-     * @param n: the index of the parent node
+     * @param i: the index of the parent node
      * @return the index of the left child node 
      */
     private int left(int i) {
@@ -84,9 +85,8 @@ public class MaxHeap {
     }
 
     /**
-     * TODO Write description for heapify
-     * @param n: the index of the parent node
-     * @return the index of the left child node 
+     * Assuming that the left and right subtrees are max-heaps, create a max heap.
+     * @param i: the index of the parent node
      */
     public void heapify(int i) { // heapification downward
         /*
@@ -98,14 +98,23 @@ public class MaxHeap {
         int largest;
         int l = left(i);
         int r = right(i);
-        if (l <= heapSize && heapArray[l].getPriority() > heapArray[r].getPriority())
-            largest = l;
-        else
-            largest = i;
+        // Test to see if right node is missing
+        if (r < heapSize) {
+            if (l <= heapSize && heapArray[l].getPriority() > heapArray[r].getPriority())
+                largest = l;
+            else
+                largest = i;
 
-        if (r <= heapSize && heapArray[r].getPriority() > heapArray[largest].getPriority())
-            largest = r;
+            if (r <= heapSize && heapArray[r].getPriority() > heapArray[largest].getPriority())
+                largest = r;
 
+            // If right node is missing run same conditionals without right node
+        } else {
+            if (l <= heapSize)
+                largest = l;
+            else
+                largest = i;
+        }
         if (largest != i) {
             // exchange heapArray[i] and heapArray[largest]
             exchangeTasks(largest, i);
@@ -115,7 +124,7 @@ public class MaxHeap {
 
     /**
      * Get the top node of the max heap
-     * @return the the top node of the max heap
+     * @return the top node of the max heap
      */
 
     public Task max() {
@@ -129,7 +138,7 @@ public class MaxHeap {
 
     /**
      * Remove the top node from the max heap and return it
-     * @return the the top node of the max heap
+     * @return the top node of the max heap
      */
     public Task extractMax() {
         Task m = max();
@@ -142,9 +151,12 @@ public class MaxHeap {
     //TODO find out why insert has int n as a parameter
     /**
      * Insert a Task into the heap.
-     * @param Task x is the Task to insert into the heap
-     * @param is the position to insert into the heap 
+     * @param x is the Task to insert into the heap
+     * @param n is the position to insert into the heap
      */
+    // heapsize - 1 put in the next avialable position
+    // take a task and put it into last avaiable position
+    // the int n overcomplicates the insert function
     public void insert(Task x, int n) {
         //check if the heapsize is equal to array size
         if (heapSize == heapArray.length) {
@@ -157,16 +169,15 @@ public class MaxHeap {
         }
         heapSize += 1;
         int k = x.getKey();
-        x.setKey((int)negInf);  
+        x.setKey((int)negInf);
         heapArray[heapSize] = x;
-        // TODO map x to index heap-size in the array
-        increaseKey(x, n);
+        increaseKey(x, k);
     }
 
     /**
      * Increase the key of the heap
-     * @param Task x is the Task to insert into the heap
-     * @param int k is the new key. 
+     * @param x is the Task to insert into the heap
+     * @param k is the new key.
      */
     public void increaseKey(Task x, int k) {
         int i; 
@@ -199,8 +210,8 @@ public class MaxHeap {
     /**
      * Switches two elements in array. The user inputs the
      * indexes of the two arrays.
-     * @param int x is the index of the first element
-     * @param int y is the index of the second element
+     * @param x is the index of the first element
+     * @param y is the index of the second element
      */
     public void exchangeTasks(int x, int y) {
         Task b;
@@ -229,7 +240,7 @@ public class MaxHeap {
      * Getter for heapArray
      * @return heapArray;
      */
-    public Task [] getHeapArray() {
+    public Task[] getHeapArray() {
         return heapArray;
     }
 
