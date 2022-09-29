@@ -37,6 +37,14 @@ Read insert pseudocode to find what the following means:
 Read increase pseudocde to find what follwing means:
     // priority queue objects to array indices
 
+## 09-29-2022
+2:26 pm
+need to do more testing on BuildMaxHeap. I have done three levels on the left
+but not the right.
+
+Also I should have more Null cases. I mean where I try the opposite
+of how my test cases should work. That is the true way to test something
+
 ## Sources to cite:
 https://www.w3schools.com/java/java_constructors.asp // Java Constructors
 
@@ -71,3 +79,7 @@ https://www.tutorialkart.com/java/java-array/java-check-if-array-is-empty/ // ch
 https://www.w3schools.com/java/java_try_catch.asp // try catch
 
 https://www.geeksforgeeks.org/null-pointer-exception-in-java/
+
+https://java2blog.com/junit-asserttrue/ // asserttrue junit
+
+https://www.tutorialkart.com/java/java-array/java-check-if-array-is-empty/ // empty array
