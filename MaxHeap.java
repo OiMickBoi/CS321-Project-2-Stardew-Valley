@@ -62,7 +62,7 @@ public class MaxHeap {
      * @param i: the index of the child
      * @return the index of the parent node 
      */
-    private int parent(int i) {
+    public int parent(int i) {
         return i / 2; // integer division
     }
 
@@ -71,7 +71,7 @@ public class MaxHeap {
      * @param i: the index of the parent node
      * @return the index of the right child node 
      */
-    private int right(int i) {
+    public int right(int i) {
         return 2 * i + 1;
     }
 
@@ -80,7 +80,7 @@ public class MaxHeap {
      * @param i: the index of the parent node
      * @return the index of the left child node 
      */
-    private int left(int i) {
+    public int left(int i) {
         return 2 * i;
     }
 
