@@ -7,7 +7,7 @@ import java.util.Arrays;
 */
 
 public class MaxHeap {
-	private int heapSize = 0;
+	private int heapSize;
 	private Task[] heapArray;
 
 	/**
@@ -97,7 +97,7 @@ public class MaxHeap {
 	}
 
 	/**
-	 * Assuming that the left and right subtrees are max-heaps, create a max heap.
+	 * Assuming that the left and right subtrees are max-heaps, heapify downward.
 	 * 
 	 * @param i - the index of the parent node
 	 */
@@ -133,6 +133,21 @@ public class MaxHeap {
 			// exchange heapArray[i] and heapArray[largest]
 			exchangeTasks(largest, i);
 			heapify(largest);
+		}
+	}
+
+	/**
+	 * Heapify upwards. Used the following code for inspiration.
+	 * <link href = https://github.com/tobeking01/heapifyUp-HeapifyDown/blob/main/GamesHeap.java>
+	 * @param i - the index of an array
+	 */
+	public void heapifyUp(int i) { // tested
+		int par = parent(i);
+		if (i <= heapSize && i > 1) {
+			if (heapArray[par].getKey() < heapArray[i].getKey()) {
+				exchangeTasks(i, par);
+				heapifyUp(par);
+			}
 		}
 	}
 
@@ -175,14 +190,8 @@ public class MaxHeap {
 		if (heapSize + 1 == heapArray.length) {
 			heapArray = Arrays.copyOf(heapArray, heapArray.length * 2);
 		}
-
-		double negInf = Double.NEGATIVE_INFINITY;
-		heapSize += 1;
-//		heapArray[heapSize] = (Task)x;
-		int k = (Task)x.getKey();
-//		x.setKey((int) negInf);
-		heapArray[heapSize] = (Task)x;
-		increaseKey(x, k);
+		heapArray[heapSize++] = (Task)x; 
+		heapifyUp(heapSize-1);
 	}
 
 	/**

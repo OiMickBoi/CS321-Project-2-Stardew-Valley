@@ -87,3 +87,10 @@ https://www.geeksforgeeks.org/null-pointer-exception-in-java/
 https://java2blog.com/junit-asserttrue/ // asserttrue junit
 
 https://www.tutorialkart.com/java/java-array/java-check-if-array-is-empty/ // empty array
+
+https://www.javatpoint.com/how-to-generate-random-number-in-java // Random
+
+https://stackoverflow.com/questions/11840902/how-do-i-get-eclipse-to-show-the-entire-javadoc-for-a-class // get javadocs eclipse
+
+
+https://github.com/tobeking01/heapifyUp-HeapifyDown/blob/main/GamesHeap.java // used heapifyUp
