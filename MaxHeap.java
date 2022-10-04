@@ -21,7 +21,7 @@ public class MaxHeap {
 	/**
 	 * Overloaded constructor to build the heap.
 	 * 
-	 * @param n: the size of the heap
+	 * @param n - the size of the heap
 	 */
 	public MaxHeap(int n) { // tested
 		heapSize = 0;
@@ -31,8 +31,8 @@ public class MaxHeap {
 	/**
 	 * Overloaded constructor to build the heap
 	 * 
-	 * @param A: user's heap array
-	 * @param n: the heap array's size
+	 * @param A - user's heap array
+	 * @param n - the heap array's size
 	 */
 	public MaxHeap(Task[] A) { // tested
 		heapSize = 0;
@@ -42,7 +42,7 @@ public class MaxHeap {
 	/**
 	 * Overloaded constructor to build the heap
 	 * 
-	 * @param A: user's heap array
+	 * @param A - user's heap array
 	 */
 	public MaxHeap(Task[] A, int n) { // not tested
 		heapSize = 0;
@@ -52,7 +52,7 @@ public class MaxHeap {
 	/**
 	 * Builds a max heap out of an unsorted array
 	 * 
-	 * @param n: the size of the heap
+	 * @param n - the size of the heap
 	 */
 	public void buildMaxHeap() { // tested
 		// heapArray[1:n] is an unsorted array
@@ -69,7 +69,7 @@ public class MaxHeap {
 	/**
 	 * Get the parent node using index
 	 * 
-	 * @param i: the index of the child
+	 * @param i - the index of the child
 	 * @return the index of the parent node
 	 */
 	public int parent(int i) { // tested
@@ -79,7 +79,7 @@ public class MaxHeap {
 	/**
 	 * Get the right node using index
 	 * 
-	 * @param i: the index of the parent node
+	 * @param i - the index of the parent node
 	 * @return the index of the right child node
 	 */
 	public int right(int i) { // tested
@@ -89,7 +89,7 @@ public class MaxHeap {
 	/**
 	 * Get the left node using index
 	 * 
-	 * @param i: the index of the parent node
+	 * @param i - the index of the parent node
 	 * @return the index of the left child node
 	 */
 	public int left(int i) { // tested
@@ -104,8 +104,8 @@ public class MaxHeap {
 	public void heapify(int i) { // tested
 		// heapification downward
 		/*
-		 * Pre-condition: Both the left and right subtrees of node i are max-heaps and i
-		 * is less than or equal to heap-size[A] Post-condition: The subtree rooted at
+		 * Pre-condition - Both the left and right subtrees of node i are max-heaps and i
+		 * is less than or equal to heap-size[A] Post-condition - The subtree rooted at
 		 * node i is a max-heap
 		 */
 		// Task b;
@@ -137,14 +137,16 @@ public class MaxHeap {
 	}
 
 	/**
-	 * Heapify upwards. Used the following code for inspiration.
-	 * <link href = https://github.com/tobeking01/heapifyUp-HeapifyDown/blob/main/GamesHeap.java>
+	 * Heapify upwards. Used the following code for inspiration
+	 * <a href = "https://github.com/tobeking01/heapifyUp-HeapifyDown/blob/main/GamesHeap.java">
+	 * tobeking01/heapifyUp-HeapifyDown.</a>
+	 * 
 	 * @param i - the index of an array
 	 */
 	public void heapifyUp(int i) { // tested
 		int par = parent(i);
 		if (i <= heapSize && i > 1) {
-			if (heapArray[par].getKey() < heapArray[i].getKey()) {
+			if (heapArray[par].getPriority() < heapArray[i].getPriority()) {
 				exchangeTasks(i, par);
 				heapifyUp(par);
 			}
@@ -190,8 +192,12 @@ public class MaxHeap {
 		if (heapSize + 1 == heapArray.length) {
 			heapArray = Arrays.copyOf(heapArray, heapArray.length * 2);
 		}
-		heapArray[heapSize++] = (Task)x; 
-		heapifyUp(heapSize-1);
+		heapSize+=1;
+		heapArray[heapSize] = (Task)x; 
+//		heapArray[1] = (Task)x; 
+		if (heapSize!=1) {
+			heapifyUp(heapSize);
+		}
 	}
 
 	/**
@@ -302,6 +308,6 @@ public class MaxHeap {
 			}
 		}
 		System.out.println("Error Task is not found");
-		return heapArray.length + 1; // will throw error because out of range
+		return heapArray.length + 1; // will throw error because it is null
 	}
 }

@@ -32,15 +32,17 @@ class MaxHeapTester {
 		task13 = new Task(13, 1);
 		
 		newTask1 = new Task(3, Task.TaskType.MINING, "mining stuff");
-		
 	}
 	
 	@Test
-	void heapifyUp() {
-		maxHeap.insert(max);
-		maxHeap.insert(task1);
-		maxHeap.insert(task2);
-		assertEquals(maxHeap.extractMax().getPriority(), max.getPriority(), "error testExtractMax");
+	void testHeapifyUp() {
+		Task [] taskArray = {null, task1, task2, max};
+		maxHeap.setHeapArray(taskArray);
+		maxHeap.setHeapSize(3);
+		maxHeap.heapifyUp(3);
+		assertEquals(maxHeap.getIndex(max), 1, "error testHeapifyUp");
+		assertEquals(maxHeap.getIndex(task1), 3, "error testHeapifyUp");
+		assertEquals(maxHeap.getIndex(task2), 2, "error testHeapifyUp");
 	}
 
 	@Test
@@ -108,6 +110,25 @@ class MaxHeapTester {
 	}
 
 	@Test
+	void testInsert2() {
+		maxHeap.insert(max);
+		maxHeap.insert(task1);
+		Task[] array = maxHeap.getHeapArray();
+		assertEquals(array[1].getPriority(), max.getPriority(), "error testInsert");
+		assertEquals(array[2].getPriority(), task1.getPriority(), "error testInsert");
+	}
+
+	@Test
+	void testInsertLess() {
+		maxHeap.insert(task1);
+		maxHeap.insert(task2);
+		maxHeap.insert(max);
+		Task[] array = maxHeap.getHeapArray();
+		assertEquals(array[1].getPriority(), max.getPriority(), "error testInsert");
+		assertEquals(array[2].getPriority(), task2.getPriority(), "error testInsert");
+		assertEquals(array[3].getPriority(), task1.getPriority(), "error testInsert");
+	}
+	@Test
 	void testMax() {
 		maxHeap.insert(max);
 		maxHeap.insert(task1);
@@ -120,11 +141,7 @@ class MaxHeapTester {
 		maxHeap.insert(task2);
 		maxHeap.insert(max);
 		maxHeap.insert(task1);
-		maxHeap.insert(task4);
-		assertEquals(maxHeap.getIndex(task2), 1, "error testHeapify");
-		assertEquals(maxHeap.getIndex(max), 2, "error testHeapify");
-		assertEquals(maxHeap.getIndex(task1), 3, "error testHeapify");
-		assertEquals(maxHeap.getIndex(task4), 4, "error testHeapify");
+		assertEquals(maxHeap.getIndex(task2), 2, "error testGetIndex");
 	}
 
 	@Test
@@ -140,30 +157,27 @@ class MaxHeapTester {
 
 	@Test
 	void testBuildMaxHeap() {
-		overloadedHeap.insert(task6);
-		overloadedHeap.insert(task7);
-		overloadedHeap.insert(task8);
-		overloadedHeap.insert(task9);
+		Task [] taskArray = {null, task6, task7, task8, task9};
+		overloadedHeap.setHeapArray(taskArray);
+		overloadedHeap.setHeapSize(4);
 		overloadedHeap.buildMaxHeap();
-		assertEquals(overloadedHeap.getIndex(task9), 1, "error testBuildMaxHeap");
-		assertEquals(overloadedHeap.getIndex(task7), 2, "error testBuildMaxHeap");
-		assertEquals(overloadedHeap.getIndex(task8), 3, "error testBuildMaxHeap");
-		assertEquals(overloadedHeap.getIndex(task6), 4, "error testBuildMaxHeap");
+		assertEquals(1, overloadedHeap.getIndex(task9), "error testBuildMaxHeap");
+		assertEquals(2, overloadedHeap.getIndex(task7), "error testBuildMaxHeap");
+		assertEquals(3, overloadedHeap.getIndex(task8), "error testBuildMaxHeap");
+		assertEquals(4, overloadedHeap.getIndex(task6), "error testBuildMaxHeap");
 	}
 
 	@Test
 	void testBuildMaxHeap2() {
-		overloadedHeap.insert(task6);
-		overloadedHeap.insert(task7);
-		overloadedHeap.insert(task8);
-		overloadedHeap.insert(task9);
-		overloadedHeap.insert(task10);
+		Task [] taskArray = {null, task6, task7, task8, task9, task10};
+		overloadedHeap.setHeapArray(taskArray);
+		overloadedHeap.setHeapSize(5);
 		overloadedHeap.buildMaxHeap();
-		assertEquals(overloadedHeap.getIndex(task10), 1, "error testBuildMaxHeap2");
-		assertEquals(overloadedHeap.getIndex(task9), 2, "error testBuildMaxHeap2");
-		assertEquals(overloadedHeap.getIndex(task8), 3, "error testBuildMaxHeap2");
-		assertEquals(overloadedHeap.getIndex(task6), 4, "error testBuildMaxHeap2");
-		assertEquals(overloadedHeap.getIndex(task7), 5, "error testBuildMaxHeap2");
+		assertEquals(1, overloadedHeap.getIndex(task10), "error testBuildMaxHeap2");
+		assertEquals(2, overloadedHeap.getIndex(task9), "error testBuildMaxHeap2");
+		assertEquals(3, overloadedHeap.getIndex(task8), "error testBuildMaxHeap2");
+		assertEquals(4, overloadedHeap.getIndex(task6), "error testBuildMaxHeap2");
+		assertEquals(5, overloadedHeap.getIndex(task7), "error testBuildMaxHeap2");
 	}
 
 	@Test
