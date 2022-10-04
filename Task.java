@@ -1,43 +1,99 @@
 public class Task implements TaskInterface, Comparable<Task> {
-    private int priority = 0;
-    private int waitingTime = 0;
-    private int key = 0;
+    private int priority;
+    private int waitingTime;
+    private int key;
+    private int hourCreated;
+    private String taskDescription = new String();
     private TaskInterface.TaskType taskType;
 
-    // Just a test constructor
-    public Task(int priority, int waitingTime) {
-        this.priority = priority;
-        this.waitingTime = waitingTime;
+    /**
+     * Default Task Constructor. Sets priority, 
+     * waitingTime, and hourCreated to 0.
+     */
+    public Task() {
+    	priority = 0;
+    	waitingTime = 0;
+    	hourCreated = 0;
     }
 
+    /**
+     * Task Constructor for Testing purposes.
+     * @param priority
+     * @param waitingTime
+     */
+    public Task(int priority, int waitingTime) {
+    	this.priority = priority;
+    	this.waitingTime = waitingTime;
+    	hourCreated = 0;
+    }
+
+    /**
+     * Overloaded Constructor for Tasks. Sets Priority and
+     * waitingTime to 0.
+     * @param hourCreated
+     * @param taskType
+     * @param taskDescription
+     */
+    public Task(int hourCreated, TaskInterface.TaskType taskType, String taskDescription) {
+    	priority = 0;
+    	waitingTime = 0;
+    	this.hourCreated = hourCreated;
+    	this.taskType = taskType;
+    	this.taskDescription += taskDescription;
+        
+    }
+
+    /**
+     * Getter method to get key.
+     * @return key
+     */
     public int getKey() {
         return key;
     }
-
+    
+    /**
+     * Setter method for key.
+     * @param key - integer to set key.
+     */
     public void setKey(int key) {
         this.key = key;
     }
 
     /**
-     * Returns the priority.
+     * Increments the key by one.
+     */
+    public void increaseKey() {
+    	key += 1;
+    }
+    
+    /**
+     * Getter method for priority.
      *
-     * @return 1 if greater, -1 if less than
+     * @return 
      */
     public int getPriority() {
         return priority;
     }
 
     /**
-     * Sets the priority to the specified value.
+     * Setter method for priority.
      *
-     * @param priority value to set priority
+     * @param priority - value to set priority.
      */
     public void setPriority(int priority) {
         this.priority = priority;
     }
 
     /**
-     * Gets the waiting time of a process.
+     * Increments Priority by 1
+     *
+     */
+    public void incrementPriority() {
+        priority += 1;
+    }
+
+    /**
+     * Gets the TaskType of a certain task
      *
      * @return - Task.TaskType - the Task's type
      */
@@ -87,12 +143,21 @@ public class Task implements TaskInterface, Comparable<Task> {
     }
 
     /**
+     * Getter method for taskDescription
+     * @return description
+     */
+	public String getTaskDescription() {
+		return taskDescription;
+	}
+
+    /**
      * Creates a string containing the Task's information.
      *
      * @return String of the Task
      */
     @Override
     public String toString() {
-        return "Task.toString() needs implementation.";
+        return taskDescription;
     }
+
 }

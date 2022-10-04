@@ -45,6 +45,10 @@ but not the right.
 Also I should have more Null cases. I mean where I try the opposite
 of how my test cases should work. That is the true way to test something
 
+TODO: iron out the javaDocs they are still inconsistent.
+
+I switched the project to Eclipse IDE. 
+
 ## Sources to cite:
 https://www.w3schools.com/java/java_constructors.asp // Java Constructors
 

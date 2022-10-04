@@ -38,5 +38,6 @@ public interface PriorityQueueInterface {
      * @param maxPriority  the maximum priority value the process can have
      */
     public void update(int timeToIncrementPriority, int maxPriority);
+   
 
 }
