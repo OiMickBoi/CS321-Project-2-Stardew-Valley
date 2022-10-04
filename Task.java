@@ -99,7 +99,8 @@ public class Task implements TaskInterface, Comparable<Task> {
      */
     //TODO implement tasktype
     public Task.TaskType getTaskType() {
-        return taskType;
+    	
+        return this.taskType;
     }
 
     /**
