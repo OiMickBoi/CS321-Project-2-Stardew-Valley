@@ -49,6 +49,21 @@ TODO: iron out the javaDocs they are still inconsistent.
 
 I switched the project to Eclipse IDE. 
 
+## 10-04-2022
+11:06 pm
+
+I have implemented all the files. I am only now playing with the output.
+My priority works fine in the beginning, but as more and more tasks are
+added it starts to have more and more problems.
+
+The reason, I have discovered, is because priorityQueue update is not taking waiting time into
+consideration, and neither is my CompareTo method in Task. if two tasks have the same
+priority, then the one that is longer should be higher on the list. because I did not take
+this into consideration, tasks stay in the queue longer then they should. 
+
+//TODO fix MyPriorityQueue.update.
+//TODO fix Task.compareTo so that if two Tasks have the same priority, the one
+with the larger waiting time goes on top of the queue.
 ## Sources to cite:
 https://www.w3schools.com/java/java_constructors.asp // Java Constructors
 
