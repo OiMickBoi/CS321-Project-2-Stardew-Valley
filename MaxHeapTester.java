@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import TaskInterface.TaskType;
+//import TaskInterface.TaskType;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -260,25 +260,10 @@ class MaxHeapTester {
 	}
 
 	@Test
-	void testCompareToEqualPriority() {
-		assertEquals(taskEqual1.compareTo(taskEqual2), -1, "error testCompareToEqualPriority");
-	}
-
-	@Test
-	void testCompareToEqualPriority2() {
-		assertEquals(taskEqual2.compareTo(taskEqual1), 1, "error testCompareToEqualPriority");
-	}
-
-	@Test
-	void testCompareToEqualPriority3() {
-		assertEquals(taskEqual3.compareTo(taskEqual4), 0, "error testCompareToEqualPriority");
-	}
-
-	@Test
 	void testCompareToEqualPriorityQueue() {
-		taskEqual5.setTimeInQueue(0);
-		taskEqual6.setTimeInQueue(1);
-		taskEqual7.setTimeInQueue(1);
+		taskEqual5.setHourCreated(0);
+		taskEqual6.setHourCreated(1);
+		taskEqual7.setHourCreated(1);
 		assertEquals(taskEqual5.compareTo(taskEqual6), -1, "error testCompareToEqualPriority");
 		assertEquals(taskEqual6.compareTo(taskEqual5), 1, "error testCompareToEqualPriority");
 		assertEquals(taskEqual6.compareTo(taskEqual7), 0, "error testCompareToEqualPriority");

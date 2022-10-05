@@ -3,7 +3,6 @@ public class Task implements TaskInterface, Comparable<Task> {
     private int waitingTime;
     private int key;
     private int hourCreated;
-    private int timeInQueue;
     private String taskDescription = new String();
     private TaskInterface.TaskType taskType;
 
@@ -128,43 +127,17 @@ public class Task implements TaskInterface, Comparable<Task> {
     }
 
     /**
-     * Setter method for the waitingTime.
-     * @param waitingTime
-     */
-    public void setWaitingTime(int waitingTime) {
-        this.waitingTime = waitingTime;
-    }
-
-    /**
-     * Returns the time spent in queue before extracted.
-     * @return timeInQueue
-     */
-    public int getTimeInQueue() {
-        return timeInQueue;
-    }
-
-    public void setTimeInQueue(int timeInQueue) {
-    	this.timeInQueue = timeInQueue;
-    }
-   
-    /**
-     * Increments timeInQueue by 1.
-     */
-    public void incrementTimeInQueue() {
-    	timeInQueue += 1;
-    }
-    
-    /**
-     * Getter method for hourCreated
+     * Getter method for hourCreated.
+     *
      * @return hourCreated
      */
     public int getHourCreated() {
-    	return hourCreated;
+        return hourCreated;
     }
-    
+
     /**
      * Setter method for hourCreated.
-     * @return
+     *
      */
     public void setHourCreated(int hourCreated) {
     	this.hourCreated = hourCreated;
@@ -201,8 +174,6 @@ public class Task implements TaskInterface, Comparable<Task> {
 			}
     	}
     }
-    
-    
 
     /**
      * Getter method for taskDescription
