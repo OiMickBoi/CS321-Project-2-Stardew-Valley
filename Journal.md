@@ -50,7 +50,7 @@ TODO: iron out the javaDocs they are still inconsistent.
 I switched the project to Eclipse IDE. 
 
 ## 10-04-2022
-###11:06 pm
+###11:06 PM
 
 I have implemented all the files. I am only now playing with the output.
 My priority works fine in the beginning, but as more and more tasks are
@@ -65,7 +65,7 @@ this into consideration, tasks stay in the queue longer then they should.
 //TODO fix Task.compareTo so that if two Tasks have the same priority, the one
 with the larger waiting time goes on top of the queue.
 
-###11:15
+###11:15 PM
 the biggest problem is from heapify. I need to implement
 compareTo to work with waitingTime. And make it so that waitingTime updates.
 made branch fixHeapify for these purposes
@@ -74,14 +74,38 @@ made branch fixHeapify for these purposes
 //TODO find out why MyPriorityQueue.update does not
 increment waitingTime.
 
-###11:43
+###11:43 PM
 completed compareTo and test for compareTo
 need to find why MyPriorityQueue.update does not 
 increment waitingTime.
-###11:57
+###11:57 PM
 fixed update(). the problem was that I was copying the array
 and making the changes to the copied array, but then not
 setting those change back to the original array
+##10-05-2022
+###12:09 AM
+code didn't work, but that's because
+I forgot to change heapify
+doing that now.
+###1:10AM
+heapify is still not working because waiting time
+will not update because of the user defined timeToIncrementLevel.
+as because this doesn't change, the waitingTime doesn't change. 
+
+I do have a custome heapify method that tries to avoid a null if there is only one child subtree. otherwise the heap would go into null space. 
+however when i use the regular heapify, t
+###1:20AM 
+goint to backtrace and try the pseduocode heapify and use the first test 
+case instead of the second one.
+
+###10:59AM
+I spent the past two hours debugging.
+I think I should go back to an older version where only the priorities were messed up 
+and add a variable called time spent in queue. then use that variable to in the
+compare to method.
+that way if priority is the same it will definetely see the time spent in queue.
+
+
 ## Sources to cite:
 https://www.w3schools.com/java/java_constructors.asp // Java Constructors
 

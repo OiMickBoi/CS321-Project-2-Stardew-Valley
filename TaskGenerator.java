@@ -48,15 +48,7 @@ public class TaskGenerator implements TaskGeneratorInterface{
     public void decrementEnergyStorage(Task.TaskType taskType) {
 		// Decrement by taskType except socializing
     	// and foraging
-		if(taskType == Task.TaskType.MINING) {
-			this.currentEnergyStorage -= 20;
-		} else if(taskType == Task.TaskType.FISHING) {
-			this.currentEnergyStorage -= 20;
-		} else if(taskType == Task.TaskType.FARM_MAINTENANCE) {
-			this.currentEnergyStorage -= 10;
-		} else if(taskType == Task.TaskType.FEEDING) {
-			this.currentEnergyStorage -= 10;
-		}
+    	this.currentEnergyStorage -= taskType.getEnergyPerHour();
     }
 
     /**

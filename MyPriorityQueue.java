@@ -45,7 +45,7 @@ public class MyPriorityQueue implements PriorityQueueInterface {
     			maxHeap.getHeapArray()[i].resetWaitingTime();
     			if (maxHeap.getHeapArray()[i].getPriority() < maxPriority) {
     				maxHeap.getHeapArray()[i].incrementPriority();
-    				maxHeap.getHeapArray()[i].increaseKey();
+//    				maxHeap.heapifyUp(i);
     			}
     		}
     	}

@@ -101,33 +101,15 @@ public class MaxHeap {
 	 * 
 	 * @param i - the index of the parent node
 	 */
-	public void heapify(int i) { // tested
-		// heapification downward
-		/*
-		 * Pre-condition - Both the left and right subtrees of node i are max-heaps and i
-		 * is less than or equal to heap-size[A] Post-condition - The subtree rooted at
-		 * node i is a max-heap
-		 */
-		// Task b;
-		int largest;
+	public void heapify(int i) {
+		int largest = i;
 		int l = left(i);
 		int r = right(i);
-		// Test to see if right node is missing
-		if (r <= heapSize) {
-			if (l <= heapSize && heapArray[l].getPriority() > heapArray[r].getPriority())
-				largest = l;
-			else
-				largest = i;
-
-			if (r <= heapSize && heapArray[r].getPriority() > heapArray[largest].getPriority())
-				largest = r;
-
-			// If right node is missing run same conditionals without right node
-		} else {
-			if (l <= heapSize)
-				largest = l;
-			else
-				largest = i;
+		if (l <= heapSize && heapArray[l].compareTo(heapArray[r]) == 1) {
+			largest = l;
+		}
+		if (r <= heapSize && heapArray[r].getPriority() > heapArray[largest].getPriority()) {
+			largest = r;
 		}
 		if (largest != i) {
 			// exchange heapArray[i] and heapArray[largest]
@@ -135,18 +117,57 @@ public class MaxHeap {
 			heapify(largest);
 		}
 	}
+//	public void heapify(int i) { // tested
+		// heapification downward
+		/*
+		 * Pre-condition - Both the left and right subtrees of node i are max-heaps and i
+		 * is less than or equal to heap-size[A] Post-condition - The subtree rooted at
+		 * node i is a max-heap
+		 */
+		// Task b;
+//		int largest;
+//		int l = left(i);
+//		int r = right(i);
+//		// Test to see if right node is missing
+//		if (r <= heapSize) {
+////			if (l <= heapSize && heapArray[l].getPriority() > heapArray[r].getPriority())
+//			// compare left and right nodes
+//			if (l <= heapSize && heapArray[l].compareTo(heapArray[r]) == 1)
+//				largest = l;
+//			else
+//				largest = i;
+//
+////			if (r <= heapSize && heapArray[r].getPriority() > heapArray[largest].getPriority())
+//			// compare right and current largest
+//			if (r <= heapSize && heapArray[r].compareTo(heapArray[largest]) == 1)
+//				largest = r;
+//
+//			// If right node is missing run same conditionals without right node
+//		} else {
+//			if (l <= heapSize)
+//				largest = l;
+//			else
+//				largest = i;
+//		}
+//		if (largest != i) {
+//			// exchange heapArray[i] and heapArray[largest]
+//			exchangeTasks(largest, i);
+//			heapify(largest);
+//		}
+//	}
 
 	/**
 	 * Heapify upwards. Used the following code for inspiration
-	 * <a href = "https://github.com/tobeking01/heapifyUp-HeapifyDown/blob/main/GamesHeap.java">
-	 * tobeking01/heapifyUp-HeapifyDown.</a>
+//	 * <a href = "https://github.com/tobeking01/heapifyUp-HeapifyDown/blob/main/GamesHeap.java">
+//	 * tobeking01/heapifyUp-HeapifyDown.</a>
 	 * 
 	 * @param i - the index of an array
 	 */
 	public void heapifyUp(int i) { // tested
 		int par = parent(i);
 		if (i <= heapSize && i > 1) {
-			if (heapArray[par].getPriority() < heapArray[i].getPriority()) {
+//			if (heapArray[par].getPriority() < heapArray[i].getPriority()) {
+			if (heapArray[par].compareTo(heapArray[i]) == -1) {
 				exchangeTasks(i, par);
 				heapifyUp(par);
 			}
@@ -195,6 +216,7 @@ public class MaxHeap {
 		heapSize+=1;
 		heapArray[heapSize] = (Task)x; 
 //		heapArray[1] = (Task)x; 
+//		int i = heapSize;
 		if (heapSize!=1) {
 			heapifyUp(heapSize);
 		}
