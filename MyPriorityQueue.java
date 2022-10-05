@@ -1,25 +1,30 @@
 public class MyPriorityQueue implements PriorityQueueInterface {
-	MaxHeap maxheap = new MaxHeap();
+	private MaxHeap maxHeap = new MaxHeap();
+	private Task currentTask = new Task();
 
 	/**
 	 *{@inheritDoc}
 	 */
     public void enqueue(Object task) {
-    	maxheap.insert(task);
+    	maxHeap.insert(task);
     }
 
 	/**
 	 *{@inheritDoc}
 	 */
     public Task dequeue() {
-    	return maxheap.extractMax();
+//    	currentTask = maxHeap.extractMax();
+//    	currentTask.resetWaitingTime();
+//    	currentTask.setPriority(0);
+//    	return currentTask;
+    	return maxHeap.extractMax();
     }
 
 	/**
 	 *{@inheritDoc}
 	 */
     public boolean isEmpty() {
-        return maxheap.isEmpty();
+        return maxHeap.isEmpty();
     }
 
 	/**
@@ -34,8 +39,8 @@ public class MyPriorityQueue implements PriorityQueueInterface {
     	 * 			priorityLevel++
     	 * 			Call increaseKey on this task
     	 */
-    	Task array[] = maxheap.getHeapArray();
-    	for(int i = 1; i <= maxheap.getHeapSize(); i++) {
+    	Task array[] = maxHeap.getHeapArray();
+    	for(int i = 1; i <= maxHeap.getHeapSize(); i++) {
 //    	for(Task i : array) {
     		array[i].incrementWaitingTime();
     		if (array[i].getWaitingTime() >= timeToIncrementPriority) {

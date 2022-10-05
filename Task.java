@@ -158,7 +158,7 @@ public class Task implements TaskInterface, Comparable<Task> {
      */
     @Override
     public String toString() {
-        return  taskType + taskDescription + hourCreated;
+        return  taskType + " " + taskDescription + " at Hour: " + hourCreated + ":00";
     }
 
 }

@@ -92,5 +92,6 @@ https://www.javatpoint.com/how-to-generate-random-number-in-java // Random
 
 https://stackoverflow.com/questions/11840902/how-do-i-get-eclipse-to-show-the-entire-javadoc-for-a-class // get javadocs eclipse
 
-
 https://github.com/tobeking01/heapifyUp-HeapifyDown/blob/main/GamesHeap.java // heapifyUp Inspiration
+
+https://www.scaler.com/topics/tostring-method-in-java/ // toString Method
