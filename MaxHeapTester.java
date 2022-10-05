@@ -9,7 +9,7 @@ class MaxHeapTester {
 	MaxHeap maxHeap, overloadedHeap;
 
 	Task task1, task2, task3, task4, max, bigMax, task6, task7, task8, task9, task10, task11, task12, task13;
-	Task newTask1, taskEqual1, taskEqual2, taskEqual3, taskEqual4;
+	Task newTask1, taskEqual1, taskEqual2, taskEqual3, taskEqual4,taskEqual5, taskEqual6, taskEqual7, taskEqual8;
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -34,6 +34,11 @@ class MaxHeapTester {
 		taskEqual2 = new Task(10, 12);
 		taskEqual3 = new Task(10, 1);
 		taskEqual4 = new Task(10, 1);
+
+		taskEqual5 = new Task(10, 1);
+		taskEqual6 = new Task(10, 1);
+		taskEqual7 = new Task(10, 1);
+		taskEqual8 = new Task(10, 1);
 		
 		newTask1 = new Task(3, Task.TaskType.MINING, "mining stuff");
 	}
@@ -267,5 +272,15 @@ class MaxHeapTester {
 	@Test
 	void testCompareToEqualPriority3() {
 		assertEquals(taskEqual3.compareTo(taskEqual4), 0, "error testCompareToEqualPriority");
+	}
+
+	@Test
+	void testCompareToEqualPriorityQueue() {
+		taskEqual5.setTimeInQueue(0);
+		taskEqual6.setTimeInQueue(1);
+		taskEqual7.setTimeInQueue(1);
+		assertEquals(taskEqual5.compareTo(taskEqual6), -1, "error testCompareToEqualPriority");
+		assertEquals(taskEqual6.compareTo(taskEqual5), 1, "error testCompareToEqualPriority");
+		assertEquals(taskEqual6.compareTo(taskEqual7), 0, "error testCompareToEqualPriority");
 	}
 }
