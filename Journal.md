@@ -76,6 +76,12 @@ increment waitingTime.
 
 ###11:43
 completed compareTo and test for compareTo
+need to find why MyPriorityQueue.update does not 
+increment waitingTime.
+###11:57
+fixed update(). the problem was that I was copying the array
+and making the changes to the copied array, but then not
+setting those change back to the original array
 ## Sources to cite:
 https://www.w3schools.com/java/java_constructors.asp // Java Constructors
 
