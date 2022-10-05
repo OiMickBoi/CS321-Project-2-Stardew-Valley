@@ -35,13 +35,14 @@ public class MyPriorityQueue implements PriorityQueueInterface {
     	 * 			Call increaseKey on this task
     	 */
     	Task array[] = maxheap.getHeapArray();
-    	for(Task i : array) {
-    		i.incrementWaitingTime();
-    		if (i.getWaitingTime() >= timeToIncrementPriority) {
-    			i.resetWaitingTime();
-    			if (i.getPriority() < maxPriority) {
-    				i.incrementPriority();
-    				i.increaseKey();
+    	for(int i = 1; i <= maxheap.getHeapSize(); i++) {
+//    	for(Task i : array) {
+    		array[i].incrementWaitingTime();
+    		if (array[i].getWaitingTime() >= timeToIncrementPriority) {
+    			array[i].resetWaitingTime();
+    			if (array[i].getPriority() < maxPriority) {
+    				array[i].incrementPriority();
+    				array[i].increaseKey();
     			}
     		}
     	}

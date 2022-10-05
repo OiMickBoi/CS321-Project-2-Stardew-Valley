@@ -36,7 +36,7 @@ public class TaskGenerator implements TaskGeneratorInterface{
         this.hourCreated = hourCreated;
         this.taskType = taskType;
         this.taskDescription = taskDescription;
-        Task newtask = new Task(1,2);
+        Task newtask = new Task(hourCreated, taskType, taskDescription);
         return newtask;
     }
 
