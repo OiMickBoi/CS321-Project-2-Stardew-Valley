@@ -231,17 +231,25 @@ public class MaxHeap {
 	 * @return boolean
 	 */
 	public boolean isEmpty() { // tested
-		if (heapArray == null) {
-			return true;
-		} else if (heapArray.length == 0) {
+//		if (heapArray == null) {
+//			return true;
+//		} else if (heapArray.length == 0) {
+//			return true;
+//		} else {
+//			for (Task i : heapArray) {
+//				if (i != null) {
+//					return false;
+//				}
+//			}
+//			return true;
+//		}
+		if (heapSize > 0) {
+			return false;
+		} else if (heapSize == 0) {
 			return true;
 		} else {
-			for (Task i : heapArray) {
-				if (i != null) {
-					return false;
-				}
-			}
-			return true;
+			System.out.println("error heap < 0, MaxHeap.isEmpty");
+			return false;
 		}
 	}
 
