@@ -264,8 +264,8 @@ class MaxHeapTester {
 		taskEqual5.setHourCreated(0);
 		taskEqual6.setHourCreated(1);
 		taskEqual7.setHourCreated(1);
-		assertEquals(taskEqual5.compareTo(taskEqual6), -1, "error testCompareToEqualPriority");
-		assertEquals(taskEqual6.compareTo(taskEqual5), 1, "error testCompareToEqualPriority");
+		assertEquals(taskEqual5.compareTo(taskEqual6), 1, "error testCompareToEqualPriority");
+		assertEquals(taskEqual6.compareTo(taskEqual5), -1, "error testCompareToEqualPriority");
 		assertEquals(taskEqual6.compareTo(taskEqual7), 0, "error testCompareToEqualPriority");
 	}
 }

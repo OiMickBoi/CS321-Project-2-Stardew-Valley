@@ -155,24 +155,21 @@ public class Task implements TaskInterface, Comparable<Task> {
     public int compareTo(Task task) {
     	// If the two tasks have equal priorities,
     	// use waiting time to compare.
-    	if (getPriority() == task.getPriority()) {
-			if(getHourCreated() > task.getHourCreated()) {
+		if(getPriority() > task.getPriority()) {
+			return 1;
+		} else if(getPriority() < task.getPriority()) {
+			return -1;
+		} else {
+			
+			if(getHourCreated() < task.getHourCreated()) {
 				return 1;
-			} else if(getHourCreated() < task.getHourCreated()) {
+			} else if(getHourCreated() > task.getHourCreated()) {
 				return -1;
 			} else {
 				return 0;
 			}
 			// compare normally with priority
-    	} else {
-			if(getPriority() > task.getPriority()) {
-				return 1;
-			} else if(getPriority() < task.getPriority()) {
-				return -1;
-			} else {
-				return 0;
-			}
-    	}
+		}
     }
 
     /**

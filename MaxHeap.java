@@ -108,21 +108,19 @@ public class MaxHeap {
 		 * is less than or equal to heap-size[A] Post-condition - The subtree rooted at
 		 * node i is a max-heap
 		 */
-		// Task b;
-		int largest;
+		int largest = i;
 		int l = left(i);
 		int r = right(i);
 		// Test to see if right node is missing
 		if (r <= heapSize) {
-			if (l <= heapSize && heapArray[l].getPriority() > heapArray[r].getPriority())
+			if (l <= heapSize && heapArray[l].compareTo(heapArray[r]) == 1) {
 				largest = l;
-			else
-				largest = i;
+			}
 
-			if (r <= heapSize && heapArray[r].getPriority() > heapArray[largest].getPriority())
+			if (r <= heapSize && heapArray[r].compareTo(heapArray[largest]) == 1){
 				largest = r;
+			}
 
-			// If right node is missing run same conditionals without right node
 		} else {
 			if (l <= heapSize)
 				largest = l;

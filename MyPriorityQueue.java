@@ -1,6 +1,6 @@
 public class MyPriorityQueue implements PriorityQueueInterface {
 	private MaxHeap maxHeap = new MaxHeap();
-//	private Task currentTask = new Task();
+	private Task currentTask = new Task();
 
 	/**
 	 *{@inheritDoc}
@@ -45,8 +45,7 @@ public class MyPriorityQueue implements PriorityQueueInterface {
     			maxHeap.getHeapArray()[i].resetWaitingTime();
     			if (maxHeap.getHeapArray()[i].getPriority() < maxPriority) {
     				maxHeap.getHeapArray()[i].incrementPriority();
-    				maxHeap.getHeapArray()[i].increaseKey();
-//    				maxHeap.getHeapArray()[i].incrementTimeInQueue();
+//    				maxHeap.heapifyUp(i);
     			}
     		}
     	}
