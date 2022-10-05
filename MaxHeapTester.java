@@ -9,7 +9,7 @@ class MaxHeapTester {
 	MaxHeap maxHeap, overloadedHeap;
 
 	Task task1, task2, task3, task4, max, bigMax, task6, task7, task8, task9, task10, task11, task12, task13;
-	Task newTask1;
+	Task newTask1, taskEqual1, taskEqual2, taskEqual3, taskEqual4;
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -30,6 +30,10 @@ class MaxHeapTester {
 		task11 = new Task(11, 1);
 		task12 = new Task(12, 1);
 		task13 = new Task(13, 1);
+		taskEqual1 = new Task(10, 1);
+		taskEqual2 = new Task(10, 12);
+		taskEqual3 = new Task(10, 1);
+		taskEqual4 = new Task(10, 1);
 		
 		newTask1 = new Task(3, Task.TaskType.MINING, "mining stuff");
 	}
@@ -248,5 +252,20 @@ class MaxHeapTester {
 	@Test
 	void testGetTaskDescription() {
 		assertEquals(newTask1.getTaskDescription(), "mining stuff", "error testFullConstructor");
+	}
+
+	@Test
+	void testCompareToEqualPriority() {
+		assertEquals(taskEqual1.compareTo(taskEqual2), -1, "error testCompareToEqualPriority");
+	}
+
+	@Test
+	void testCompareToEqualPriority2() {
+		assertEquals(taskEqual2.compareTo(taskEqual1), 1, "error testCompareToEqualPriority");
+	}
+
+	@Test
+	void testCompareToEqualPriority3() {
+		assertEquals(taskEqual3.compareTo(taskEqual4), 0, "error testCompareToEqualPriority");
 	}
 }

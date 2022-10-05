@@ -127,20 +127,35 @@ public class Task implements TaskInterface, Comparable<Task> {
     }
 
     /**
-     * Compares the priority of two tasks
-     * @param task
-     * @return
+     * Compares the priority of two tasks. If Task object is
+     * bigger it returns 1.
+     * If the parameter is larger than the object, it returns
+     * -1.
+     * @param task to compare
+     * @return - 1, -1, or 0
      */
 
     public int compareTo(Task task) {
-        if(getPriority() > task.getPriority()) {
-            return 1;
-        }
-        else if(getPriority() < task.getPriority()) {
-            return -1;
-        } else {
-            return 0;
-        }
+    	// If the two tasks have equal priorities,
+    	// use waiting time to compare.
+    	if (getPriority() == task.getPriority()) {
+			if(getWaitingTime() > task.getWaitingTime()) {
+				return 1;
+			} else if(getWaitingTime() < task.getWaitingTime()) {
+				return -1;
+			} else {
+				return 0;
+			}
+			// compare normally with priority
+    	} else {
+			if(getPriority() > task.getPriority()) {
+				return 1;
+			} else if(getPriority() < task.getPriority()) {
+				return -1;
+			} else {
+				return 0;
+			}
+    	}
     }
 
     /**

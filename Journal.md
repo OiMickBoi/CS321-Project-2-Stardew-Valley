@@ -50,7 +50,7 @@ TODO: iron out the javaDocs they are still inconsistent.
 I switched the project to Eclipse IDE. 
 
 ## 10-04-2022
-11:06 pm
+###11:06 pm
 
 I have implemented all the files. I am only now playing with the output.
 My priority works fine in the beginning, but as more and more tasks are
@@ -64,6 +64,18 @@ this into consideration, tasks stay in the queue longer then they should.
 //TODO fix MyPriorityQueue.update.
 //TODO fix Task.compareTo so that if two Tasks have the same priority, the one
 with the larger waiting time goes on top of the queue.
+
+###11:15
+the biggest problem is from heapify. I need to implement
+compareTo to work with waitingTime. And make it so that waitingTime updates.
+made branch fixHeapify for these purposes
+//TODO update compareTo to work with waitingTime.
+//TODO create waitingTime Tester.
+//TODO find out why MyPriorityQueue.update does not
+increment waitingTime.
+
+###11:43
+completed compareTo and test for compareTo
 ## Sources to cite:
 https://www.w3schools.com/java/java_constructors.asp // Java Constructors
 
