@@ -59,9 +59,10 @@ class MaxHeapTester {
 		maxHeap.insert(task6_2);
 		maxHeap.insert(task6_3);
 		assertEquals(maxHeap.extractMax().getPriority(), bigMax.getPriority(), "error testExtractMax");
-		assertEquals(maxHeap.getIndex(), , "error testExtractMax");
-		assertEquals(maxHeap.extractMax().getPriority(), max.getPriority(), "error testExtractMax");
-		assertEquals(maxHeap.extractMax().getPriority(), max.getPriority(), "error testExtractMax");
+		assertEquals(maxHeap.getIndex(task8), 1 , "error testExtractMax");
+		assertEquals(maxHeap.getIndex(task7), 2 , "error testExtractMax");
+		assertEquals(maxHeap.getIndex(task6_3), 3 , "error testExtractMax");
+		assertEquals(maxHeap.getIndex(task6_2), 4 , "error testExtractMax");
 	}
 
 //	@Test
