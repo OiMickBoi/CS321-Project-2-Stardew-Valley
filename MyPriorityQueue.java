@@ -72,7 +72,7 @@ public class MyPriorityQueue extends MaxHeap implements PriorityQueueInterface {
     		if (super.getHeapArray()[i].getWaitingTime() >= timeToIncrementPriority) {
     			super.getHeapArray()[i].resetWaitingTime();
     			if (super.getHeapArray()[i].getPriority() < maxPriority) {
-    				super.getHeapArray()[i].incrementPriority();
+//    				super.getHeapArray()[i].incrementPriority();
     				try {
 						super.increaseKey(super.getHeapArray()[i], super.getHeapSize());
     				} catch (HeapException e) {}
