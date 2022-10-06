@@ -1,7 +1,6 @@
 public class Task implements TaskInterface, Comparable<Task> {
     private int priority;
     private int waitingTime;
-    private int key;
     private int hourCreated;
     private String taskDescription = new String();
     private TaskInterface.TaskType taskType;
@@ -43,28 +42,13 @@ public class Task implements TaskInterface, Comparable<Task> {
         
     }
 
-    /**
-     * Getter method to get key.
-     * @return key
-     */
-    public int getKey() {
-        return key;
-    }
-    
-    /**
-     * Setter method for key.
-     * @param key - integer to set key.
-     */
-    public void setKey(int key) {
-        this.key = key;
-    }
 
-    /**
-     * Increments the key by one.
-     */
-    public void increaseKey() {
-    	key += 1;
-    }
+//    /**
+//     * Increments the key by one.
+//     */
+//    public void increaseKey() {
+//    	key += 1;
+//    }
     
     /**
      * Getter method for priority.

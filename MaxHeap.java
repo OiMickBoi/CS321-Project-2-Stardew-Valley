@@ -183,23 +183,6 @@ public class MaxHeap {
 		return m;
 	}
 
-	/**
-	 * Insert a object into the heap.
-	 * 
-	 * @param x - the object to insert into the heap
-	 * @param n - the position to insert into the heap
-	 */
-	public void insert(Object x) { // tested
-		// check if the heapsize is equal to array size
-		if (heapSize + 1 == heapArray.length) {
-			heapArray = Arrays.copyOf(heapArray, heapArray.length * 2);
-		}
-		heapSize+=1;
-		heapArray[heapSize] = (Task)x; 
-		if (heapSize>=1) {
-			heapifyUp(heapSize);
-		}
-	}
 
 	/**
 	 * Increase the key of some object inside heap
@@ -208,16 +191,14 @@ public class MaxHeap {
 	 * @param k - the new key.
 	 * @throws HeapException - new key is smaller than current key
 	 */
-	public void increaseKey(Task x) throws HeapException { // tested
+	public void increaseKey(Task x, int k) throws HeapException { // tested
 		int i;
-		if (k < x.getKey()) {
+		if (x.compareTo(heapArray[k]) == -1) {
 			throw new HeapException("new key is smaller than current key");
 		} else {
-
-			x.setPriority(k);
-			// find the index i in array heapArray where object x occurs
-			i = getIndex(x);
-//			while (i > 1 && heapArray[parent(i)].getPriority() < heapArray[i].getKey()) {
+			heapArray[k].setPriority(x.getPriority());
+			heapArray[k].setHourCreated(x.getHourCreated());
+			i = k;
 			while (i > 1 && heapArray[parent(i)].compareTo(heapArray[i]) == -1) {
 				// exchange heapArray[i] with heapArray[Parent(i)], updating the information
 				// that maps
@@ -225,6 +206,44 @@ public class MaxHeap {
 			}
 		}
 	}
+
+	/**
+	 * Insert a object into the heap.
+	 * 
+	 * @param x - the object to insert into the heap
+	 * @param n - the position to insert into the heap
+	 * @throws HeapException 
+	 */
+	public void insert(Object x) throws HeapException { // tested
+		// check if the heapsize is equal to array size
+		if (heapSize + 1 == heapArray.length) {
+			heapArray = Arrays.copyOf(heapArray, heapArray.length * 2);
+		}
+		heapSize+=1;
+		heapArray[heapSize] = (Task)x; 
+		increaseKey((Task)x, heapSize);
+//		if (heapSize>=1) {
+//			heapifyUp(heapSize);
+//		}
+	}
+//	/**
+//	 * Increase the key of some object inside heap. In the case
+//	 * of Task objects, the priority will be incremented and 
+//	 * the heap will heapify to compensate.
+//	 * 
+//	 * @param x - the Task to increase the key/priority.
+//	 */
+//	public void increaseKey(Task x) { // tested
+//		int i;
+//		x.incrementPriority();
+//		// find the index i in array heapArray where object x occurs
+//		i = getIndex(x);
+//		while (i > 1 && heapArray[parent(i)].compareTo(heapArray[i]) == -1) {
+//			// exchange heapArray[i] with heapArray[Parent(i)], updating the information
+//			// that maps
+//			exchangeTasks(i, parent(i));
+//		}
+//	}
 
 	/**
 	 * Find out if heap is full or empty. Returns

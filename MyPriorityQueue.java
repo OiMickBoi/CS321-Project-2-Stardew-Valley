@@ -12,7 +12,9 @@ public class MyPriorityQueue extends MaxHeap implements PriorityQueueInterface {
 	 *{@inheritDoc}
 	 */
     public void enqueue(Object task) {
-    	super.insert(task);
+    	try {
+			super.insert(task);
+    	} catch (HeapException e) {}
     }
 
 	/**
@@ -61,17 +63,21 @@ public class MyPriorityQueue extends MaxHeap implements PriorityQueueInterface {
     public void update(int timeToIncrementPriority, int maxPriority) {
     	Task[] tempArray = new Task[super.getHeapArray().length];
     	for(int i = 1; i <= super.getHeapSize(); i++) {
-    		try {
-    			tempArray[i] = this.extractMax();
-    			super.increaseHeapSize();
-    		}
-    		catch (HeapException e) {}
+//    		try {
+//    			tempArray[i] = this.extractMax();
+//    			super.increaseHeapSize();
+//    		}
+//    		catch (HeapException e) {}
     		super.getHeapArray()[i].incrementWaitingTime();
     		if (super.getHeapArray()[i].getWaitingTime() >= timeToIncrementPriority) {
     			super.getHeapArray()[i].resetWaitingTime();
     			if (super.getHeapArray()[i].getPriority() < maxPriority) {
     				super.getHeapArray()[i].incrementPriority();
-    				super.increaseKey(super.getHeapArray()[i],super.getHeapArray()[i].incrementPriority());
+    				try {
+						super.increaseKey(super.getHeapArray()[i], super.getHeapSize());
+    				} catch (HeapException e) {}
+    				
+
 //    				this.increaseKey(, i);
 //    				this.get
     			}
