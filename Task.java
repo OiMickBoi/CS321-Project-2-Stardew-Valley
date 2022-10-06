@@ -41,14 +41,6 @@ public class Task implements TaskInterface, Comparable<Task> {
     	this.taskDescription += taskDescription;
         
     }
-
-
-//    /**
-//     * Increments the key by one.
-//     */
-//    public void increaseKey() {
-//    	key += 1;
-//    }
     
     /**
      * Getter method for priority.
@@ -138,13 +130,12 @@ public class Task implements TaskInterface, Comparable<Task> {
 
     public int compareTo(Task task) {
     	// If the two tasks have equal priorities,
-    	// use waiting time to compare.
+    	// use time created to compare.
 		if(getPriority() > task.getPriority()) {
 			return 1;
 		} else if(getPriority() < task.getPriority()) {
 			return -1;
 		} else {
-			
 			if(getHourCreated() < task.getHourCreated()) {
 				return 1;
 			} else if(getHourCreated() > task.getHourCreated()) {
@@ -152,7 +143,6 @@ public class Task implements TaskInterface, Comparable<Task> {
 			} else {
 				return 0;
 			}
-			// compare normally with priority
 		}
     }
 
