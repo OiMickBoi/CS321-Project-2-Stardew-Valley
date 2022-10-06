@@ -111,7 +111,7 @@ public class MaxHeap {
 		int largest = i;
 		int l = left(i);
 		int r = right(i);
-		// Test to see if right node is missing
+
 		if (l <= heapSize && heapArray[l].compareTo(heapArray[largest]) > 0) {
 			largest = l;
 		}
@@ -155,6 +155,7 @@ public class MaxHeap {
 		Task m = max();
 		heapArray[1] = heapArray[heapSize];
 		heapSize = heapSize - 1;
+		heapSize -= 1;
 		heapify(1);
 		return m;
 	}
@@ -169,16 +170,16 @@ public class MaxHeap {
 	 */
 	public void increaseKey(Task x, int k) throws HeapException { // tested
 		int i;
-		if (x.compareTo(heapArray[k]) == -1) {
+		if (x.compareTo(heapArray[k]) < 0) {
 			throw new HeapException("new key is smaller than current key");
 		} else {
-//			heapArray[k].setPriority(x.getPriority());
-			x.incrementPriority();
-			i = k;
-			while (i > 1 && heapArray[parent(i)].compareTo(heapArray[i]) == -1) {
+			//x.key = k
+			i = getIndex(x);
+			while (i > 1 && heapArray[parent(i)].compareTo(heapArray[i]) < 0) {
 				// exchange heapArray[i] with heapArray[Parent(i)], updating the information
 				// that maps
 				exchangeTasks(i, parent(i));
+				i -= 1;
 			}
 		}
 	}
