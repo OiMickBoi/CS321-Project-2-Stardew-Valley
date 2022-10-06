@@ -169,18 +169,18 @@ public class MaxHeap {
 	 */
 	public void increaseKey(Task x, int k) throws HeapException { // tested
 		int i;
-		if (k < x.getPriority()) {
-			throw new HeapException("new key is smaller than current key");
-		} else {
+//		if (k < x.getPriority()) {
+//			throw new HeapException("new key is smaller than current key");
+//		} else {
 			i = getIndex(x);
 			while (i > 1 && heapArray[parent(i)].compareTo(heapArray[i]) < 0) {
 				// exchange heapArray[i] with heapArray[Parent(i)], updating the information
 				// that maps
 				exchangeTasks(i, parent(i));
-				i = getIndex(x);
+				i = parent(i);
 			}
 		}
-	}
+//	}
 
 	/**
 	 * Insert a object into the heap.
@@ -289,5 +289,35 @@ public class MaxHeap {
 		return heapArray.length + 1; // will throw error because it is null
 	}
 	
-	
+	/**
+	 * confirms it is a maxHeap.
+	 * @param node
+	 * @return
+	 */
+	public boolean isMaxHeap(int i) {
+		int largest = i;
+		int l = left(i);
+		int r = right(i);
+
+		if (l <= heapSize && heapArray[l].compareTo(heapArray[largest]) < 0) {
+			boolean isHeap = isMaxHeap(l);
+			if (isHeap ==  false) {
+				return false;
+			}
+		} else if (l <= heapSize && heapArray[l].compareTo(heapArray[largest]) > 0) {
+			return false;
+		}
+
+		if (r <= heapSize && heapArray[r].compareTo(heapArray[i]) < 0) {
+			boolean isHeap = isMaxHeap(r);
+			if (isHeap ==  false) {
+				return false;
+			}
+		} else if (r <= heapSize && heapArray[r].compareTo(heapArray[largest]) > 0) {
+			return false;
+		}
+		return true;
+		
+	}
+
 }

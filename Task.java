@@ -39,7 +39,6 @@ public class Task implements TaskInterface, Comparable<Task> {
     	this.hourCreated = hourCreated;
     	this.taskType = taskType;
     	this.taskDescription += taskDescription;
-        
     }
     
     /**
@@ -75,7 +74,6 @@ public class Task implements TaskInterface, Comparable<Task> {
      */
     //TODO implement tasktype
     public Task.TaskType getTaskType() {
-    	
         return this.taskType;
     }
 

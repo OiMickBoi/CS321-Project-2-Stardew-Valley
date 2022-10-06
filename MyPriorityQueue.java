@@ -26,6 +26,11 @@ public class MyPriorityQueue extends MaxHeap implements PriorityQueueInterface {
     public boolean isEmpty() {
         return super.isEmpty();
     }
+    
+    @Override
+    public boolean isMaxHeap() {
+    	return super.isMaxHeap((1));
+    }
 
 	/**
 	 *{@inheritDoc}
