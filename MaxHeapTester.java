@@ -82,10 +82,12 @@ class MaxHeapTester {
 	@Test
 	void testHeapDoubling() {
 		// test if Heap doubles when heapSize max is reached.
-		overloadedHeap.insert(max);
-		overloadedHeap.insert(task1);
-		overloadedHeap.insert(task2);
-		overloadedHeap.insert(task3);
+		try {
+			overloadedHeap.insert(max);
+			overloadedHeap.insert(task1);
+			overloadedHeap.insert(task2);
+			overloadedHeap.insert(task3);
+		} catch (HeapException e) {}
 		Task[] array = overloadedHeap.getHeapArray();
 		assertEquals(array.length, 8, "error testHeapDoubling");
 	}
@@ -93,9 +95,11 @@ class MaxHeapTester {
 	@Test
 	void testParent() {
 		// parent() test
-		overloadedHeap.insert(max);
-		overloadedHeap.insert(task1);
-		overloadedHeap.insert(task2);
+		try {
+			overloadedHeap.insert(max);
+			overloadedHeap.insert(task1);
+			overloadedHeap.insert(task2);
+		} catch (HeapException e) {}
 		Task[] array = overloadedHeap.getHeapArray();
 		assertEquals(array[maxHeap.parent(3)].getPriority(), max.getPriority(), "error testParent");
 	}
@@ -103,9 +107,11 @@ class MaxHeapTester {
 	@Test
 	void testLeft() {
 		// left() test
-		overloadedHeap.insert(max);
-		overloadedHeap.insert(task1);
-		overloadedHeap.insert(task2);
+		try {
+			overloadedHeap.insert(max);
+			overloadedHeap.insert(task1);
+			overloadedHeap.insert(task2);
+		} catch (HeapException e) {}
 		Task[] array = overloadedHeap.getHeapArray();
 		assertEquals(array[maxHeap.left(1)].getPriority(), array[2].getPriority(), "error testLeft");
 	}
@@ -113,24 +119,30 @@ class MaxHeapTester {
 	@Test
 	void testRight() {
 		// right() test
-		overloadedHeap.insert(max);
-		overloadedHeap.insert(task1);
-		overloadedHeap.insert(task2);
+		try {
+			overloadedHeap.insert(max);
+			overloadedHeap.insert(task1);
+			overloadedHeap.insert(task2);
+		} catch (HeapException e) {}
 		Task[] array = overloadedHeap.getHeapArray();
 		assertEquals(array[maxHeap.left(1)].getPriority(), array[2].getPriority(), "error testRight");
 	}
 
 	@Test
 	void testInsert() {
-		maxHeap.insert(max);
+		try {
+			maxHeap.insert(max);
+		} catch (HeapException e) {}
 		Task[] array = maxHeap.getHeapArray();
 		assertEquals(array[1].getPriority(), max.getPriority(), "error testInsert");
 	}
 
 	@Test
 	void testInsert2() {
-		maxHeap.insert(max);
-		maxHeap.insert(task1);
+		try {
+			maxHeap.insert(max);
+			maxHeap.insert(task1);
+		} catch (HeapException e) {}
 		Task[] array = maxHeap.getHeapArray();
 		assertEquals(array[1].getPriority(), max.getPriority(), "error testInsert");
 		assertEquals(array[2].getPriority(), task1.getPriority(), "error testInsert");
@@ -138,9 +150,11 @@ class MaxHeapTester {
 
 	@Test
 	void testInsertLess() {
-		maxHeap.insert(task1);
-		maxHeap.insert(task2);
-		maxHeap.insert(max);
+		try {
+			overloadedHeap.insert(max);
+			overloadedHeap.insert(task1);
+			overloadedHeap.insert(task2);
+		} catch (HeapException e) {}
 		Task[] array = maxHeap.getHeapArray();
 		assertEquals(array[1].getPriority(), max.getPriority(), "error testInsert");
 		assertEquals(array[2].getPriority(), task2.getPriority(), "error testInsert");
@@ -148,25 +162,31 @@ class MaxHeapTester {
 	}
 	@Test
 	void testMax() {
-		maxHeap.insert(max);
-		maxHeap.insert(task1);
-		maxHeap.insert(task2);
+		try {
+			overloadedHeap.insert(max);
+			overloadedHeap.insert(task1);
+			overloadedHeap.insert(task2);
+		} catch (HeapException e) {}
 		assertEquals(maxHeap.max().getPriority(), max.getPriority(), "error testMax");
 	}
 
 	@Test
 	void testGetIndex() {
-		maxHeap.insert(bigMax);
-		maxHeap.insert(task6);
-		maxHeap.insert(task7);
+		try {
+			maxHeap.insert(bigMax);
+			maxHeap.insert(task6);
+			maxHeap.insert(task7);
+		} catch (HeapException e) {}
 		assertEquals(maxHeap.getIndex(task6), 2, "error testGetIndex");
 	}
 
 	@Test
 	void testHeapify() {
-		overloadedHeap.insert(task2);
-		overloadedHeap.insert(max);
-		overloadedHeap.insert(task1);
+		try {
+			overloadedHeap.insert(task2);
+			overloadedHeap.insert(max);
+			overloadedHeap.insert(task1);
+		} catch (HeapException e) {}
 		overloadedHeap.heapify(1);
 		assertEquals(overloadedHeap.getIndex(max), 1, "error testHeapify");
 		assertEquals(overloadedHeap.getIndex(task1), 3, "error testHeapify");
@@ -218,8 +238,10 @@ class MaxHeapTester {
 
 	@Test
 	void testExchangeTasks() {
-		maxHeap.insert(task1);
-		maxHeap.insert(task2);
+		try {
+			maxHeap.insert(task1);
+			maxHeap.insert(task2);
+		} catch (HeapException e) {}
 		maxHeap.exchangeTasks(1, 2);
 		assertEquals(maxHeap.getIndex(task1), 2, "error testExchangeTasks");
 		assertEquals(maxHeap.getIndex(task2), 1, "error testExchangeTasks");
@@ -227,9 +249,11 @@ class MaxHeapTester {
 
 	@Test
 	void testGetHeapSize() {
-		maxHeap.insert(task1);
-		maxHeap.insert(task2);
-		maxHeap.insert(task3);
+		try {
+			maxHeap.insert(task1);
+			maxHeap.insert(task2);
+			maxHeap.insert(task3);
+		} catch (HeapException e) {}
 		assertEquals(maxHeap.getHeapSize(), 3, "error testGetHeapSize");
 	}
 
@@ -241,10 +265,12 @@ class MaxHeapTester {
 
 	@Test
 	void testGetHeapArray() {
-		overloadedHeap.insert(max);
-		overloadedHeap.insert(task1);
-		overloadedHeap.insert(task2);
-		overloadedHeap.insert(task3);
+		try {
+			overloadedHeap.insert(max);
+			overloadedHeap.insert(task1);
+			overloadedHeap.insert(task2);
+			overloadedHeap.insert(task3);
+		} catch (HeapException e) {}
 		Task[] array = overloadedHeap.getHeapArray();
 		assertEquals(array, overloadedHeap.getHeapArray(), "error testGetHeapArray");
 	}
