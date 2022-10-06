@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import TaskInterface.TaskType;
+//import TaskInterface.TaskType;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,7 +9,7 @@ class MaxHeapTester {
 	MaxHeap maxHeap, overloadedHeap;
 
 	Task task1, task2, task3, task4, max, bigMax, task6, task7, task8, task9, task10, task11, task12, task13;
-	Task newTask1, taskEqual1, taskEqual2, taskEqual3, taskEqual4, task6_2, task6_3; 
+	Task newTask1, taskEqual1, taskEqual2, taskEqual3, taskEqual4,taskEqual5, taskEqual6, taskEqual7, taskEqual8, task6_2, task6_3;
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -36,6 +36,11 @@ class MaxHeapTester {
 		taskEqual2 = new Task(10, 12);
 		taskEqual3 = new Task(10, 1);
 		taskEqual4 = new Task(10, 1);
+
+		taskEqual5 = new Task(10, 1);
+		taskEqual6 = new Task(10, 1);
+		taskEqual7 = new Task(10, 1);
+		taskEqual8 = new Task(10, 1);
 		
 		newTask1 = new Task(3, Task.TaskType.MINING, "mining stuff");
 	}
@@ -51,19 +56,19 @@ class MaxHeapTester {
 		assertEquals(maxHeap.getIndex(task2), 2, "error testHeapifyUp");
 	}
 
-	@Test
-	void testExtractMax() {
-		maxHeap.insert(bigMax);
-		maxHeap.insert(task7);
-		maxHeap.insert(task8);
-		maxHeap.insert(task6_2);
-		maxHeap.insert(task6_3);
-		assertEquals(maxHeap.extractMax().getPriority(), bigMax.getPriority(), "error testExtractMax");
-		assertEquals(maxHeap.getIndex(task8), 1 , "error testExtractMax");
-		assertEquals(maxHeap.getIndex(task7), 2 , "error testExtractMax");
-		assertEquals(maxHeap.getIndex(task6_3), 3 , "error testExtractMax");
-		assertEquals(maxHeap.getIndex(task6_2), 4 , "error testExtractMax");
-	}
+//	@Test
+//	void testExtractMax() {
+//		maxHeap.insert(bigMax);
+//		maxHeap.insert(task7);
+//		maxHeap.insert(task8);
+//		maxHeap.insert(task6_2);
+//		maxHeap.insert(task6_3);
+//		assertEquals(maxHeap.extractMax().getPriority(), bigMax.getPriority(), "error testExtractMax");
+//		assertEquals(maxHeap.getIndex(task8), 1 , "error testExtractMax");
+//		assertEquals(maxHeap.getIndex(task7), 2 , "error testExtractMax");
+//		assertEquals(maxHeap.getIndex(task6_3), 3 , "error testExtractMax");
+//		assertEquals(maxHeap.getIndex(task6_2), 4 , "error testExtractMax");
+//	}
 
 //	@Test
 //	void testOverloadedExtractMax() {
@@ -264,17 +269,12 @@ class MaxHeapTester {
 	}
 
 	@Test
-	void testCompareToEqualPriority() {
-		assertEquals(taskEqual1.compareTo(taskEqual2), -1, "error testCompareToEqualPriority");
-	}
-
-	@Test
-	void testCompareToEqualPriority2() {
-		assertEquals(taskEqual2.compareTo(taskEqual1), 1, "error testCompareToEqualPriority");
-	}
-
-	@Test
-	void testCompareToEqualPriority3() {
-		assertEquals(taskEqual3.compareTo(taskEqual4), 0, "error testCompareToEqualPriority");
+	void testCompareToEqualPriorityQueue() {
+		taskEqual5.setHourCreated(0);
+		taskEqual6.setHourCreated(1);
+		taskEqual7.setHourCreated(1);
+		assertEquals(taskEqual5.compareTo(taskEqual6), 1, "error testCompareToEqualPriority");
+		assertEquals(taskEqual6.compareTo(taskEqual5), -1, "error testCompareToEqualPriority");
+		assertEquals(taskEqual6.compareTo(taskEqual7), 0, "error testCompareToEqualPriority");
 	}
 }

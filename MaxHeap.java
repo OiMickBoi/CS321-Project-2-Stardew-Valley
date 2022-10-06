@@ -101,15 +101,43 @@ public class MaxHeap {
 	 * 
 	 * @param i - the index of the parent node
 	 */
-	public void heapify(int i) {
+//<<<<<<< HEAD
+//	public void heapify(int i) {
+//		int largest = i;
+//		int l = left(i);
+//		int r = right(i);
+//		if (l <= heapSize && heapArray[l].compareTo(heapArray[r]) == 1) {
+//			largest = l;
+//		}
+//		if (r <= heapSize && heapArray[r].getPriority() > heapArray[largest].getPriority()) {
+//			largest = r;
+//=======
+	public void heapify(int i) { // tested
+		// heapification downward
+		/*
+		 * Pre-condition - Both the left and right subtrees of node i are max-heaps and i
+		 * is less than or equal to heap-size[A] Post-condition - The subtree rooted at
+		 * node i is a max-heap
+		 */
 		int largest = i;
 		int l = left(i);
 		int r = right(i);
-		if (l <= heapSize && heapArray[l].compareTo(heapArray[r]) == 1) {
-			largest = l;
-		}
-		if (r <= heapSize && heapArray[r].getPriority() > heapArray[largest].getPriority()) {
-			largest = r;
+		// Test to see if right node is missing
+		if (r <= heapSize) {
+			if (l <= heapSize && heapArray[l].compareTo(heapArray[r]) == 1) {
+				largest = l;
+			}
+
+			if (r <= heapSize && heapArray[r].compareTo(heapArray[largest]) == 1){
+				largest = r;
+			}
+
+		} else {
+			if (l <= heapSize)
+				largest = l;
+			else
+				largest = i;
+//>>>>>>> oldVersion
 		}
 		if (largest != i) {
 			// exchange heapArray[i] and heapArray[largest]
