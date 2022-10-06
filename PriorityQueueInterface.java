@@ -20,8 +20,9 @@ public interface PriorityQueueInterface {
      * via MaxHeap ExtractMax()
      *
      * @return first element in the Task array
+     * @throws HeapException 
      */
-    public Task dequeue();
+    public Task dequeue() throws HeapException;
 
     /**
      * Boolean for if the Heap is empty.

@@ -199,7 +199,7 @@ class MaxHeapTester {
 	}
 
 	@Test
-	void testIncreaseKey() {
+	void testIncreaseKey() throws HeapException {
 		overloadedHeap.insert(task6);
 		overloadedHeap.insert(task7);
 		overloadedHeap.insert(task8);

@@ -1,52 +1,75 @@
-public class MyPriorityQueue implements PriorityQueueInterface {
-	private MaxHeap maxHeap = new MaxHeap();
+public class MyPriorityQueue extends MaxHeap implements PriorityQueueInterface {
+
+	public MyPriorityQueue() {
+		super();
+	}
+
+	public MyPriorityQueue(Task A []) {
+		super(A);
+	}
 
 	/**
 	 *{@inheritDoc}
 	 */
     public void enqueue(Object task) {
-    	maxHeap.insert(task);
+    	this.insert(task);
     }
 
 	/**
 	 *{@inheritDoc}
 	 */
     public Task dequeue() {
-//    	currentTask = maxHeap.extractMax();
-//    	currentTask.resetWaitingTime();
-//    	currentTask.setPriority(0);
-//    	return currentTask;
-    	return maxHeap.extractMax();
+    	try {
+			return super.extractMax();
+    	} catch(HeapException e) {
+    		return null;
+    	}
     }
 
 	/**
 	 *{@inheritDoc}
 	 */
     public boolean isEmpty() {
-        return maxHeap.isEmpty();
+        return this.isEmpty();
     }
 
 	/**
 	 *{@inheritDoc}
 	 */
     public void update(int timeToIncrementPriority, int maxPriority) {
-    	/*
-    	 * waitingTime++
-    	 * if waitingTime >= timeToIncrementPriority
-    	 * 		waitingTime = 0
-    	 * 		if(priorityLevel < maxPriorityLevle
-    	 * 			priorityLevel++
-    	 * 			Call increaseKey on this task
-    	 */
-    	for(int i = 1; i <= maxHeap.getHeapSize(); i++) {
-    		maxHeap.getHeapArray()[i].incrementWaitingTime();
-    		if (maxHeap.getHeapArray()[i].getWaitingTime() >= timeToIncrementPriority) {
-    			maxHeap.getHeapArray()[i].resetWaitingTime();
-    			if (maxHeap.getHeapArray()[i].getPriority() < maxPriority) {
-    				maxHeap.getHeapArray()[i].incrementPriority();
+    	Task[] tempArray = new Task[this.getHeapSize()];
+    	for(int i = 1; i <= tempArray.length; i++) {
+    		try {
+    			tempArray[i] = this.extractMax();
+    		}
+    		catch (HeapException e) {}
+    		tempArray[i].incrementWaitingTime();
+    		if (tempArray[i].getWaitingTime() >= timeToIncrementPriority) {
+    			tempArray[i].resetWaitingTime();
+    			if (tempArray[i].getPriority() < maxPriority) {
+    				tempArray[i].incrementPriority();
     			}
     		}
     	}
     }
 
+//    public void update(int timeToIncrementPriority, int maxPriority) {
+//    	Task[] tempArray = new Task[this.getHeapSize()];
+//    	for(int i = 1; i <= tempArray.length; i++) {
+//    		try {
+//    			tempArray[i] = this.extractMax();
+//    		}
+//    		catch (HeapException e) {}
+//    		this.getHeapArray()[i].incrementWaitingTime();
+//    		if (this.getHeapArray()[i].getWaitingTime() >= timeToIncrementPriority) {
+//    			this.getHeapArray()[i].resetWaitingTime();
+//    			if (this.getHeapArray()[i].getPriority() < maxPriority) {
+////    				this.getHeapArray()[i].incrementPriority();
+//    				this.increaseKey(, i);
+////    				this.get
+//    			}
+//    		}
+//    	}
+//    }
+//
 }
