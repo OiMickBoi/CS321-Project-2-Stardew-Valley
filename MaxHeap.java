@@ -154,8 +154,8 @@ public class MaxHeap {
 		}
 		Task m = max();
 		heapArray[1] = heapArray[heapSize];
-		heapSize = heapSize - 1;
-		heapSize -= 1;
+//		heapSize = heapSize - 1;
+		heapSize-=1;
 		heapify(1);
 		return m;
 	}
