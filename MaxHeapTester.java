@@ -44,17 +44,6 @@ class MaxHeapTester {
 		
 		newTask1 = new Task(3, Task.TaskType.MINING, "mining stuff");
 	}
-	
-	@Test
-	void testHeapifyUp() {
-		Task [] taskArray = {null, task1, task2, max};
-		maxHeap.setHeapArray(taskArray);
-		maxHeap.setHeapSize(3);
-		maxHeap.heapifyUp(3);
-		assertEquals(maxHeap.getIndex(max), 1, "error testHeapifyUp");
-		assertEquals(maxHeap.getIndex(task1), 3, "error testHeapifyUp");
-		assertEquals(maxHeap.getIndex(task2), 2, "error testHeapifyUp");
-	}
 
 	@Test
 	void testExtractMax() {

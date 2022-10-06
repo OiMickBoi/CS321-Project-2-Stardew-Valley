@@ -1,13 +1,4 @@
 public class MyPriorityQueue extends MaxHeap implements PriorityQueueInterface {
-
-	public MyPriorityQueue() {
-		super();
-	}
-
-	public MyPriorityQueue(Task A []) {
-		super(A);
-	}
-
 	/**
 	 *{@inheritDoc}
 	 */
@@ -53,5 +44,4 @@ public class MyPriorityQueue extends MaxHeap implements PriorityQueueInterface {
     		}
     	}
     }
-
 }

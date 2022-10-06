@@ -154,8 +154,7 @@ public class MaxHeap {
 		}
 		Task m = max();
 		heapArray[1] = heapArray[heapSize];
-//		heapSize = heapSize - 1;
-		heapSize-=1;
+		heapSize -= 1;
 		heapify(1);
 		return m;
 	}
@@ -170,16 +169,15 @@ public class MaxHeap {
 	 */
 	public void increaseKey(Task x, int k) throws HeapException { // tested
 		int i;
-		if (x.compareTo(heapArray[k]) < 0) {
+		if (k < x.getPriority()) {
 			throw new HeapException("new key is smaller than current key");
 		} else {
-			//x.key = k
 			i = getIndex(x);
 			while (i > 1 && heapArray[parent(i)].compareTo(heapArray[i]) < 0) {
 				// exchange heapArray[i] with heapArray[Parent(i)], updating the information
 				// that maps
 				exchangeTasks(i, parent(i));
-				i -= 1;
+				i = getIndex(x);
 			}
 		}
 	}
