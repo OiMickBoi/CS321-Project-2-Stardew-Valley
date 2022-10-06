@@ -39,47 +39,16 @@ public class MyPriorityQueue extends MaxHeap implements PriorityQueueInterface {
 	/**
 	 *{@inheritDoc}
 	 */
-//    public void update(int timeToIncrementPriority, int maxPriority) {
-//    	Task[] tempArray = new Task[super.getHeapArray().length];
-//    	for(int i = 1; i <= super.getHeapSize(); i++) {
-//    		try {
-//    			tempArray[i] = super.extractMax();
-//    		}
-//    		catch (HeapException e) {}
-//    		tempArray[i].incrementWaitingTime();
-//    		if (tempArray[i].getWaitingTime() >= timeToIncrementPriority) {
-//    			tempArray[i].resetWaitingTime();
-//    			if (tempArray[i].getPriority() < maxPriority) {
-//    				tempArray[i].incrementPriority();
-//    			}
-//    		}
-//
-//    	}
-//    	for(int i = 1; i <= super.getHeapSize(); i++) {
-//    		this.enqueue(tempArray[i]);
-//    	}
-//    }
-
     public void update(int timeToIncrementPriority, int maxPriority) {
-    	Task[] tempArray = new Task[super.getHeapArray().length];
     	for(int i = 1; i <= super.getHeapSize(); i++) {
-//    		try {
-//    			tempArray[i] = this.extractMax();
-//    			super.increaseHeapSize();
-//    		}
-//    		catch (HeapException e) {}
-    		super.getHeapArray()[i].incrementWaitingTime();
-    		if (super.getHeapArray()[i].getWaitingTime() >= timeToIncrementPriority) {
-    			super.getHeapArray()[i].resetWaitingTime();
-    			if (super.getHeapArray()[i].getPriority() < maxPriority) {
-//    				super.getHeapArray()[i].incrementPriority();
+    		heapArray[i].incrementWaitingTime();
+    		if (heapArray[i].getWaitingTime() >= timeToIncrementPriority) {
+    			heapArray[i].resetWaitingTime();
+    			if (heapArray[i].getPriority() < maxPriority) {
+    				heapArray[i].incrementPriority();
     				try {
-						super.increaseKey(super.getHeapArray()[i], super.getHeapSize());
+						increaseKey(heapArray[i], 1);
     				} catch (HeapException e) {}
-    				
-
-//    				this.increaseKey(, i);
-//    				this.get
     			}
     		}
     	}
