@@ -12,7 +12,7 @@ public class MyPriorityQueue extends MaxHeap implements PriorityQueueInterface {
 	 *{@inheritDoc}
 	 */
     public void enqueue(Object task) {
-    	this.insert(task);
+    	super.insert(task);
     }
 
 	/**
@@ -21,7 +21,8 @@ public class MyPriorityQueue extends MaxHeap implements PriorityQueueInterface {
     public Task dequeue() {
     	try {
 			return super.extractMax();
-    	} catch(HeapException e) {
+    	} 
+    	catch(HeapException e) {
     		return null;
     	}
     }
@@ -30,46 +31,52 @@ public class MyPriorityQueue extends MaxHeap implements PriorityQueueInterface {
 	 *{@inheritDoc}
 	 */
     public boolean isEmpty() {
-        return this.isEmpty();
+        return super.isEmpty();
     }
 
 	/**
 	 *{@inheritDoc}
 	 */
+//    public void update(int timeToIncrementPriority, int maxPriority) {
+//    	Task[] tempArray = new Task[super.getHeapArray().length];
+//    	for(int i = 1; i <= super.getHeapSize(); i++) {
+//    		try {
+//    			tempArray[i] = super.extractMax();
+//    		}
+//    		catch (HeapException e) {}
+//    		tempArray[i].incrementWaitingTime();
+//    		if (tempArray[i].getWaitingTime() >= timeToIncrementPriority) {
+//    			tempArray[i].resetWaitingTime();
+//    			if (tempArray[i].getPriority() < maxPriority) {
+//    				tempArray[i].incrementPriority();
+//    			}
+//    		}
+//
+//    	}
+//    	for(int i = 1; i <= super.getHeapSize(); i++) {
+//    		this.enqueue(tempArray[i]);
+//    	}
+//    }
+
     public void update(int timeToIncrementPriority, int maxPriority) {
-    	Task[] tempArray = new Task[this.getHeapSize()];
-    	for(int i = 1; i <= tempArray.length; i++) {
+    	Task[] tempArray = new Task[super.getHeapArray().length];
+    	for(int i = 1; i <= super.getHeapSize(); i++) {
     		try {
     			tempArray[i] = this.extractMax();
+    			super.increaseHeapSize();
     		}
     		catch (HeapException e) {}
-    		tempArray[i].incrementWaitingTime();
-    		if (tempArray[i].getWaitingTime() >= timeToIncrementPriority) {
-    			tempArray[i].resetWaitingTime();
-    			if (tempArray[i].getPriority() < maxPriority) {
-    				tempArray[i].incrementPriority();
+    		super.getHeapArray()[i].incrementWaitingTime();
+    		if (super.getHeapArray()[i].getWaitingTime() >= timeToIncrementPriority) {
+    			super.getHeapArray()[i].resetWaitingTime();
+    			if (super.getHeapArray()[i].getPriority() < maxPriority) {
+    				super.getHeapArray()[i].incrementPriority();
+    				super.increaseKey(super.getHeapArray()[i],super.getHeapArray()[i].incrementPriority());
+//    				this.increaseKey(, i);
+//    				this.get
     			}
     		}
     	}
     }
 
-//    public void update(int timeToIncrementPriority, int maxPriority) {
-//    	Task[] tempArray = new Task[this.getHeapSize()];
-//    	for(int i = 1; i <= tempArray.length; i++) {
-//    		try {
-//    			tempArray[i] = this.extractMax();
-//    		}
-//    		catch (HeapException e) {}
-//    		this.getHeapArray()[i].incrementWaitingTime();
-//    		if (this.getHeapArray()[i].getWaitingTime() >= timeToIncrementPriority) {
-//    			this.getHeapArray()[i].resetWaitingTime();
-//    			if (this.getHeapArray()[i].getPriority() < maxPriority) {
-////    				this.getHeapArray()[i].incrementPriority();
-//    				this.increaseKey(, i);
-////    				this.get
-//    			}
-//    		}
-//    	}
-//    }
-//
 }

@@ -22,7 +22,7 @@ public interface PriorityQueueInterface {
      * @return first element in the Task array
      * @throws HeapException 
      */
-    public Task dequeue() throws HeapException;
+    public Task dequeue();
 
     /**
      * Boolean for if the Heap is empty.
