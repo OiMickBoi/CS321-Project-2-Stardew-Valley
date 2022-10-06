@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 public class MaxHeap {
 	private int heapSize;
-	private Task[] heapArray;
+	protected Task[] heapArray;
 
 	/**
 	 * Default constructor to build empty max heap.
@@ -112,42 +112,18 @@ public class MaxHeap {
 		int l = left(i);
 		int r = right(i);
 		// Test to see if right node is missing
-		if (r <= heapSize) {
-			if (l <= heapSize && heapArray[l].compareTo(heapArray[r]) == 1) {
-				largest = l;
-			}
-
-			if (r <= heapSize && heapArray[r].compareTo(heapArray[largest]) == 1) {
-				largest = r;
-			}
-
-		} else {
-			if (l <= heapSize)
-				largest = l;
-			else
-				largest = i;
+		if (l <= heapSize && heapArray[l].compareTo(heapArray[largest]) > 0) {
+			largest = l;
 		}
+
+		if (r <= heapSize && heapArray[r].compareTo(heapArray[largest]) > 0) {
+			largest = r;
+		}
+
 		if (largest != i) {
 			// exchange heapArray[i] and heapArray[largest]
 			exchangeTasks(largest, i);
 			heapify(largest);
-		}
-	}
-
-	/**
-	 * Heapify upwards. Used the following code for inspiration
-//	 * <a href = "https://github.com/tobeking01/heapifyUp-HeapifyDown/blob/main/GamesHeap.java">
-//	 * tobeking01/heapifyUp-HeapifyDown.</a>
-	 * 
-	 * @param i - the index of an array
-	 */
-	public void heapifyUp(int i) { // tested
-		int par = parent(i);
-		if (i <= heapSize && i > 1) {
-			if (heapArray[par].compareTo(heapArray[i]) == -1) {
-				exchangeTasks(i, par);
-				heapifyUp(par);
-			}
 		}
 	}
 
@@ -196,8 +172,8 @@ public class MaxHeap {
 		if (x.compareTo(heapArray[k]) == -1) {
 			throw new HeapException("new key is smaller than current key");
 		} else {
-			heapArray[k].setPriority(x.getPriority());
-			heapArray[k].setHourCreated(x.getHourCreated());
+//			heapArray[k].setPriority(x.getPriority());
+			x.incrementPriority();
 			i = k;
 			while (i > 1 && heapArray[parent(i)].compareTo(heapArray[i]) == -1) {
 				// exchange heapArray[i] with heapArray[Parent(i)], updating the information
