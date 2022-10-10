@@ -1,3 +1,10 @@
+/**
+ * Defines a Task object.  Each Task contains a
+ * priority level, task type, waiting time, hour 
+ * created and description. 
+ *
+ * @author Joshua Boyle
+ */
 public class Task implements TaskInterface, Comparable<Task> {
     private int priority;
     private int waitingTime;
@@ -17,8 +24,8 @@ public class Task implements TaskInterface, Comparable<Task> {
 
     /**
      * Task Constructor for Testing purposes.
-     * @param priority
-     * @param waitingTime
+     * @param priority parameter to set priority
+     * @param waitingTime parameter to set waiting time
      */
     public Task(int priority, int waitingTime) {
     	this.priority = priority;
@@ -29,9 +36,9 @@ public class Task implements TaskInterface, Comparable<Task> {
     /**
      * Overloaded Constructor for Tasks. Sets Priority and
      * waitingTime to 0.
-     * @param hourCreated
-     * @param taskType
-     * @param taskDescription
+     * @param hourCreated parameter to set hourCreated
+     * @param taskType parameter to set taskType
+     * @param taskDescription parameter to set TaskDescription
      */
     public Task(int hourCreated, TaskInterface.TaskType taskType, String taskDescription) {
     	priority = 0;
@@ -44,7 +51,7 @@ public class Task implements TaskInterface, Comparable<Task> {
     /**
      * Getter method for priority.
      *
-     * @return 
+     * @return priority the Task object's priority
      */
     public int getPriority() {
         return priority;
@@ -53,7 +60,7 @@ public class Task implements TaskInterface, Comparable<Task> {
     /**
      * Setter method for priority.
      *
-     * @param priority - value to set priority.
+     * @param priority value to set priority.
      */
     public void setPriority(int priority) {
         this.priority = priority;
@@ -68,11 +75,10 @@ public class Task implements TaskInterface, Comparable<Task> {
     }
 
     /**
-     * Gets the TaskType of a certain task
+     * Getter method for a Task's tasktype
      *
-     * @return - Task.TaskType - the Task's type
+     * @return taskType the Task's type
      */
-    //TODO implement tasktype
     public Task.TaskType getTaskType() {
         return this.taskType;
     }
@@ -123,7 +129,7 @@ public class Task implements TaskInterface, Comparable<Task> {
      * If the parameter is larger than the object, it returns
      * -1.
      * @param task to compare
-     * @return - 1, -1, or 0
+     * @return 1, -1, or 0
      */
 
     public int compareTo(Task task) {

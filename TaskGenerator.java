@@ -43,7 +43,7 @@ public class TaskGenerator implements TaskGeneratorInterface{
     /**
      * Decrements the total energy storage based on the current task.
      *
-     * @param taskType - the type of Task
+     * @param taskType the type of Task
      */
     public void decrementEnergyStorage(Task.TaskType taskType) {
 		// Decrement by taskType except socializing
@@ -79,7 +79,7 @@ public class TaskGenerator implements TaskGeneratorInterface{
     /**
      * Determines if a new task is to be generated.
      *
-     * return true or false - if task should be generated
+     * return true or false if task should be generated
      */
     public boolean generateTask() {
     	Double x = random.nextDouble();
@@ -96,23 +96,11 @@ public class TaskGenerator implements TaskGeneratorInterface{
      * 0 is not dying or passing out, 1 is passing out,
      * and 2 is dying in the Mines.
      *
-     * @param task - the Task
-     * @param unlucky - probability 
+     * @param task the Task
+     * @param unlucky probability 
      * @returns  0, 1 or 2 depending on the unluckiness
      */
     public int getUnlucky(Task task, double unluckyProbability) {
-    	/*
-    	 * if unluckyProb <= passoutProb
-    	 * 		if unluckyProb <= deathProb and Task is Mining
-    	 * 			currentEnergyStorage reduced by 75%
-    	 * 			Task Priority = 0
-    	 * 			return 2 [for death]
-    	 * 		else 
-    	 * 			currentEnergyStorage / 2 
-    	 * 			return 1 [for passing-out]
-    	 * 	else 
-    	 * 		return 0 [no death/pass-out]
-    	 */
     	if (unluckyProbability <= task.getTaskType().getPassingOutProbability()) {
     		if (unluckyProbability <= task.getTaskType().getDyingProbabilityProbability() && task.getTaskType() == taskType.MINING) {
     			currentEnergyStorage -= (3 * currentEnergyStorage/4); 
@@ -130,8 +118,8 @@ public class TaskGenerator implements TaskGeneratorInterface{
     /**
      * Create a String containing the Task's information.
      *
-     * @param task - the Task
-     * @param taskType - the Task's type
+     * @param task the Task
+     * @param taskType the Task's type
      */
     @Override
     public String toString(Task task, Task.TaskType taskType) {

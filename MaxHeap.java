@@ -1,3 +1,11 @@
+/**
+ * Defines a max-heap using an array. 
+ * The heap doubles automatically when 
+ * it becomes full.  
+ * Each node within the max-heap contains one of 
+ * the six types of tasks.  
+ * @author Joshua Boyle 
+ */
 import java.util.Arrays;
 
 /* start at index one. you used the
@@ -21,7 +29,7 @@ public class MaxHeap {
 	/**
 	 * Overloaded constructor to build the heap.
 	 * 
-	 * @param n - the size of the heap
+	 * @param n the size of the heap
 	 */
 	public MaxHeap(int n) { // tested
 		heapSize = 0;
@@ -31,8 +39,8 @@ public class MaxHeap {
 	/**
 	 * Overloaded constructor to build the heap
 	 * 
-	 * @param A - user's heap array
-	 * @param n - the heap array's size
+	 * @param A user's heap array
+	 * @param n the heap array's size
 	 */
 	public MaxHeap(Task[] A) { // tested
 		heapSize = 0;
@@ -42,7 +50,7 @@ public class MaxHeap {
 	/**
 	 * Overloaded constructor to build the heap
 	 * 
-	 * @param A - user's heap array
+	 * @param A user's heap array
 	 */
 	public MaxHeap(Task[] A, int n) { // not tested
 		heapSize = 0;
@@ -52,14 +60,9 @@ public class MaxHeap {
 	/**
 	 * Builds a max heap out of an unsorted array
 	 * 
-	 * @param n - the size of the heap
+	 * @param n the size of the heap
 	 */
 	public void buildMaxHeap() { // tested
-		// heapArray[1:n] is an unsorted array
-		// 1. heapArray.heap-size = n
-		// 2. for i = n/2 downto 1 // skip the leaves
-		// 3. do MAX-HEAPIFY(heapArray, i)
-		// Task [] heapArray = new Task[n];
 		for (int i = heapSize / 2; i > 0; i--) {
 			heapify(i);
 		}
@@ -69,7 +72,7 @@ public class MaxHeap {
 	/**
 	 * Get the parent node using index
 	 * 
-	 * @param i - the index of the child
+	 * @param i the index of the child
 	 * @return the index of the parent node
 	 */
 	public int parent(int i) { // tested
@@ -79,7 +82,7 @@ public class MaxHeap {
 	/**
 	 * Get the right node using index
 	 * 
-	 * @param i - the index of the parent node
+	 * @param i the index of the parent node
 	 * @return the index of the right child node
 	 */
 	public int right(int i) { // tested
@@ -89,7 +92,7 @@ public class MaxHeap {
 	/**
 	 * Get the left node using index
 	 * 
-	 * @param i - the index of the parent node
+	 * @param i the index of the parent node
 	 * @return the index of the left child node
 	 */
 	public int left(int i) { // tested
@@ -99,7 +102,7 @@ public class MaxHeap {
 	/**
 	 * Assuming that the left and right subtrees are max-heaps, heapify downward.
 	 * 
-	 * @param i - the index of the parent node
+	 * @param i the index of the parent node
 	 */
 	public void heapify(int i) { // tested
 		// heapification downward
@@ -130,7 +133,7 @@ public class MaxHeap {
 	/**
 	 * Get the top node of the max heap
 	 * 
-	 * @return heapArray[1] - the top node of the max heap
+	 * @return heapArray[1] the top node of the max heap
 	 */
 
 	public Task max() { // tested
@@ -145,8 +148,8 @@ public class MaxHeap {
 	/**
 	 * Remove the top node from the max heap and return it
 	 * 
-	 * @return m - the top node of the max heap
-	 * @throws HeapException - heap underflow
+	 * @return m the top node of the max heap
+	 * @throws HeapException heap underflow
 	 */
 	public Task extractMax() throws HeapException { // tested
 		if (heapSize <= 0) {
@@ -163,15 +166,12 @@ public class MaxHeap {
 	/**
 	 * Increase the key of some object inside heap
 	 * 
-	 * @param x - the Task to increase the key.
-	 * @param k - the new key.
-	 * @throws HeapException - new key is smaller than current key
+	 * @param x the Task to increase the key.
+	 * @param k the new key.
+	 * @throws HeapException new key is smaller than current key
 	 */
 	public void increaseKey(Task x, int k) throws HeapException { // tested
 		int i;
-//		if (k < x.getPriority()) {
-//			throw new HeapException("new key is smaller than current key");
-//		} else {
 			i = getIndex(x);
 			while (i > 1 && heapArray[parent(i)].compareTo(heapArray[i]) < 0) {
 				// exchange heapArray[i] with heapArray[Parent(i)], updating the information
@@ -185,8 +185,8 @@ public class MaxHeap {
 	/**
 	 * Insert a object into the heap.
 	 * 
-	 * @param x - the object to insert into the heap
-	 * @param n - the position to insert into the heap
+	 * @param x the object to insert into the heap
+	 * @param n the position to insert into the heap
 	 * @throws HeapException 
 	 */
 	public void insert(Object x) throws HeapException { // tested
@@ -194,6 +194,7 @@ public class MaxHeap {
 		if (heapSize + 1 == heapArray.length) {
 			heapArray = Arrays.copyOf(heapArray, heapArray.length * 2);
 		}
+		// insert task
 		heapSize+=1;
 		heapArray[heapSize] = (Task)x; 
 		increaseKey((Task)x, heapSize);
@@ -292,7 +293,7 @@ public class MaxHeap {
 	/**
 	 * confirms it is a maxHeap.
 	 * @param node
-	 * @return
+	 * @return true if it is a max heap false if not
 	 */
 	public boolean isMaxHeap(int i) {
 		int largest = i;
