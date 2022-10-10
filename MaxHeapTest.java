@@ -1,11 +1,9 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-//import TaskInterface.TaskType;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-class MaxHeapTester {
+class MaxHeapTest {
 	MaxHeap maxHeap, overloadedHeap;
 
 	Task task1, task2, task3, task4, max, bigMax, task6, task7, task8, task9, task10, task11, task12, task13;
@@ -130,19 +128,6 @@ class MaxHeapTester {
 		assertEquals(array[1].getPriority(), max.getPriority(), "error testInsert");
 		assertEquals(array[2].getPriority(), task1.getPriority(), "error testInsert");
 	}
-
-//	@Test
-//	void testInsertLess() {
-//		try {
-//			overloadedHeap.insert(max);
-//			overloadedHeap.insert(task1);
-//			overloadedHeap.insert(task2);
-//		} catch (HeapException e) {}
-//		Task[] array = overloadedHeap.getHeapArray();
-//		assertEquals(array[1].getPriority(), max.getPriority(), "error testInsert");
-//		assertEquals(array[3].getPriority(), task1.getPriority(), "error testInsert");
-//		assertEquals(array[2].getPriority(), task2.getPriority(), "error testInsert");
-//	}
 
 	@Test
 	void testMax() {

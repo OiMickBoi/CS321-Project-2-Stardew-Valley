@@ -22,7 +22,7 @@ public interface PriorityQueueInterface {
      * @return first element in the Task array
      * @throws HeapException 
      */
-    public Task dequeue();
+    public Task dequeue(); 
 
     /**
      * Boolean for if the Heap is empty.
@@ -39,6 +39,8 @@ public interface PriorityQueueInterface {
      * @param maxPriority  the maximum priority value the process can have
      */
     public void update(int timeToIncrementPriority, int maxPriority);
+
+	public boolean isMaxHeap();
    
 
 }
