@@ -37,7 +37,7 @@ public class MaxHeap {
 	}
 
 	/**
-	 * Overloaded constructor to build the heap
+	 * Overloaded constructor to build the heap.
 	 * 
 	 * @param A user's heap array
 	 * @param n the heap array's size
@@ -48,7 +48,7 @@ public class MaxHeap {
 	}
 
 	/**
-	 * Overloaded constructor to build the heap
+	 * Overloaded constructor to build the heap.
 	 * 
 	 * @param A user's heap array
 	 */
@@ -58,7 +58,7 @@ public class MaxHeap {
 	}
 
 	/**
-	 * Builds a max heap out of an unsorted array
+	 * Builds a max heap out of an unsorted array.
 	 * 
 	 * @param n the size of the heap
 	 */
@@ -70,30 +70,30 @@ public class MaxHeap {
 
 	// Get the parent node using index
 	/**
-	 * Get the parent node using index
+	 * Get the parent node using index.
 	 * 
-	 * @param i the index of the child
-	 * @return the index of the parent node
+	 * @param i the index of the child.
+	 * @return Returns the parent node's index.
 	 */
 	public int parent(int i) { // tested
 		return i / 2; // integer division
 	}
 
 	/**
-	 * Get the right node using index
+	 * Get the right node using index.
 	 * 
 	 * @param i the index of the parent node
-	 * @return the index of the right child node
+	 * @return Returns the index of the right child node.
 	 */
 	public int right(int i) { // tested
 		return 2 * i + 1;
 	}
 
 	/**
-	 * Get the left node using index
+	 * Get the left node using index.
 	 * 
 	 * @param i the index of the parent node
-	 * @return the index of the left child node
+	 * @return Returns the index of the left child node.
 	 */
 	public int left(int i) { // tested
 		return 2 * i;
@@ -131,9 +131,9 @@ public class MaxHeap {
 	}
 
 	/**
-	 * Get the top node of the max heap
+	 * Get the top node of the max heap.
 	 * 
-	 * @return heapArray[1] the top node of the max heap
+	 * @return Index of the top node
 	 */
 
 	public Task max() { // tested
@@ -146,9 +146,9 @@ public class MaxHeap {
 	}
 
 	/**
-	 * Remove the top node from the max heap and return it
+	 * Remove the top node from the max heap and return it.
 	 * 
-	 * @return m the top node of the max heap
+	 * @return m - The top node of the max heap.
 	 * @throws HeapException heap underflow
 	 */
 	public Task extractMax() throws HeapException { // tested
@@ -164,10 +164,10 @@ public class MaxHeap {
 
 
 	/**
-	 * Increase the key of some object inside heap
+	 * Increase the key of some object inside heap.
 	 * 
-	 * @param x the Task to increase the key.
-	 * @param k the new key.
+	 * @param x The Task to increase the key.
+	 * @param k The new key.
 	 * @throws HeapException new key is smaller than current key
 	 */
 	public void increaseKey(Task x, int k) throws HeapException { // tested
@@ -204,7 +204,7 @@ public class MaxHeap {
 	 * Find out if heap is full or empty. Returns
 	 * false if it is full and true if it is empty
 	 * 
-	 * @return boolean
+	 * @return true or false - determines if the heap is full or empty
 	 */
 	public boolean isEmpty() { // tested
 		if (heapSize > 0) {
@@ -221,8 +221,8 @@ public class MaxHeap {
 	 * Switches two elements in array. The user inputs the indexes of the two
 	 * arrays.
 	 * 
-	 * @param x is the index of the first element
-	 * @param y is the index of the second element
+	 * @param x the index of the first element
+	 * @param y the index of the second element
 	 */
 	public void exchangeTasks(int x, int y) { // tested
 		Task b;
@@ -232,53 +232,53 @@ public class MaxHeap {
 	}
 
 	/**
-	 * Getter for heapSize
+	 * Getter for heapSize.
 	 * 
-	 * @return heapSize Value
+	 * @return heapSize - The size of the heap.
 	 */
 	public int getHeapSize() { // tested
 		return heapSize;
 	}
 
 	/**
-	 * Setter for heapSize
+	 * Setter for heapSize.
 	 * 
-	 * @param heapSize new Value
+	 * @param heapSize new size of the heap
 	 */
 	public void setHeapSize(int heapSize) { // tested
 		this.heapSize = heapSize;
 	}
 
 	/**
-	 * Increase HeapSize by 1
+	 * Increase the size of the heap by 1.
 	 */
 	public void increaseHeapSize() { // tested
 		this.heapSize += 1;
 	}
 
 	/**
-	 * Getter for heapArray
+	 * Get the array containing the heap.
 	 * 
-	 * @return heapArray;
+	 * @return heapArray - the array containing the heap
 	 */
 	public Task[] getHeapArray() { // tested
 		return heapArray;
 	}
 
 	/**
-	 * set an array to be the heapArray
+	 * Set an array to be the heapArray.
 	 * 
-	 * @param heapArray
+	 * @param heapArray array to contain the heap
 	 */
 	public void setHeapArray(Task[] heapArray) { // tested
 		this.heapArray = heapArray;
 	}
 
 	/**
-	 * Get the index of an object in the heap Array
+	 * Get the index of an object in the heap Array.
 	 * 
-	 * @param t
-	 * @return i
+	 * @param t task to get index
+	 * @return i - The index of the searched task.
 	 */
 	public int getIndex(Task t) { // tested
 		for (int i = 0; i < heapArray.length; i++) {
@@ -291,9 +291,11 @@ public class MaxHeap {
 	}
 	
 	/**
-	 * confirms it is a maxHeap.
-	 * @param node
-	 * @return true if it is a max heap false if not
+	 * Given a index i, the method will traverse the
+	 * array and determine if the array contains
+	 * a MaxHeap.
+	 * @param i node in a heap
+	 * @return true or false - if it is truly a heap.
 	 */
 	public boolean isMaxHeap(int i) {
 		int largest = i;
